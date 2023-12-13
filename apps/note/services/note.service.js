@@ -1,5 +1,6 @@
-import { utilService } from '../../../services/util.service.js'
+// import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
+import {  asyncStorge } from '../../../services/async-storage.service.js'
 
 const NOTES_KEY = 'noteDB'
 _createnotes()
@@ -15,7 +16,8 @@ export const noteService = {
 }
 
 function query() {
-    return storageService.query(NOTES_KEY)
+    console.log('1')
+    return asyncStorge.query(NOTES_KEY)
         .then(notes => {
             // if (filterBy.name) {
             //     const regex = new RegExp(filterBy.name, 'i')
@@ -29,22 +31,22 @@ function query() {
 }
 
 function get(noteId) {
-    return storageService.get(NOTES_KEY, noteId)
+    return asyncStorge.get(NOTES_KEY, noteId)
 }
 
 function remove(noteId) {
-    return storageService.remove(NOTES_KEY, noteId)
+    return asyncStorge.remove(NOTES_KEY, noteId)
 }
 
 function save(note) {
     if (note.id) {
-        return storageService.put(NOTES_KEY, note)
+        return asyncStorge.put(NOTES_KEY, note)
     } else {
-        return storageService.post(NOTES_KEY, note)
+        return asyncStorge.post(NOTES_KEY, note)
     }
 }
 
-function getNewNote(type = 'NoteTxt', isPinned = false, style = { bgc: '#00d' }, info = { txt: 'Im a new text note' }) {
+function getNewNote(type = 'noteTxt', isPinned = false, style = { bgc: '#00d' }, info = { txt: 'Im a new text note' }) {
     return { id: '', createdAt: new Date(), typemisPinned, style, info }
 }
 
@@ -53,14 +55,14 @@ function getDefaultFilter() {
 }
 
 function _createnotes() {
-    let notes = utilService.loadFromStorage(NOTES_KEY)
+    let notes = storageService.loadFromStorage(NOTES_KEY)
 
     if (!notes || !notes.length) {
         notes = [
             {
                 id: 'n101',
                 createdAt: 1112222,
-                type: 'NoteTxt',
+                type: 'note-txt',
                 isPinned: true,
                 style: {
                     backgroundColor: '#00d'
@@ -71,7 +73,7 @@ function _createnotes() {
             },
             {
                 id: 'n102',
-                type: 'NoteImg',
+                type: 'note-img',
                 isPinned: false,
                 info: {
                     url: 'http://some-img/me',
@@ -83,7 +85,7 @@ function _createnotes() {
             },
             {
                 id: 'n103',
-                type: 'NoteTodos',
+                type: 'Note-todos',
                 isPinned: false,
                 info: {
                     title: 'Get my stuff together',
@@ -95,5 +97,5 @@ function _createnotes() {
             }
         ]
     }
-    utilService.saveToStorage(NOTES_KEY, notes)
+    storageService.saveToStorage(NOTES_KEY, notes)
 }
