@@ -20,9 +20,9 @@ export function NoteList({ notes }) {
                     <li key={note.id} >
                         <DynmicNoteCmp cmpType={note.type} info={note.info} />
                         <section>
-                            <button >a</button>
-                            <button >b</button>
-                            <button >c</button>
+                            <button>a</button>
+                            <button>b</button>
+                            <button>c</button>
                             <button>d</button>
                             <button>e</button>
                         </section>
