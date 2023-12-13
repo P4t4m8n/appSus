@@ -25,9 +25,13 @@ export function MailPreview({ mail }) {
 
   return (
     <article className="mail-preview">
-      <h2>{mail.from}</h2>
-      <h2>{mail.subject}</h2>
-      <h2>{formattedSentAt}</h2>
+      <div className="container-mail-btns">
+        <button>Select</button>
+        <button>⭐</button>
+      </div>
+      <h2 className="mail-from">{mail.from}</h2>
+      <h2 className="mail-subject">{mail.subject}</h2>
+      <h2 className="mail-sent-at">{formattedSentAt}</h2>
     </article>
   )
 }
