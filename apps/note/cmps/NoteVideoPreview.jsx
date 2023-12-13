@@ -1,7 +1,7 @@
 
-export function NoteVideoPreview({ url, title }) {
+export function NoteVideoPreview({ url, title: txt }) {
     return <section className="note-video-con">
-        <header>{title}</header>
+        <header>{txt}</header>
         <iframe src={url}></iframe>
     </section>
 }

@@ -45,8 +45,8 @@ function save(note) {
     }
 }
 
-function getNewNote(type = 'noteTxt', isPinned = false, style = { bgc: '#00d' }, info = { txt: 'Im a new text note' }) {
-    return { id: '', createdAt: new Date(), typemisPinned, style, info }
+function getNewNote(type = 'note-txt', isPinned = false, style = { bgc: '#00d' }, info = { txt: 'Im a new text note' }) {
+    return { id: '', createdAt: new Date(), type,isPinned, style, info }
 }
 
 function getDefaultFilter() {
@@ -76,7 +76,7 @@ function _createnotes() {
                 isPinned: false,
                 info: {
                     url: '../../../assets/img/audi.jpg',
-                    title: 'Bobi and Me'
+                    txt: 'Bobi and Me'
                 },
                 style: {
                     backgroundColor: '#0000dd'

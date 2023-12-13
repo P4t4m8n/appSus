@@ -5,24 +5,34 @@
 
 .notes-index {
     height: 100%;
+
 }
 
-.note-list li {
+.note-list>* {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     min-height: 10rem;
     position: relative;
-    /* height: fit-content; */
-    /* gap:1rem; */
+    justify-content: space-between;
+    border: 0.25rem solid black;
+    gap: 3rem;
+    margin: 1rem;
 }
 
 .note-btns {
-    bottom: 0;
-    right: 0;
-    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    align-self: flex-end;
+    /* position: absolute; */
+    background-color: none;
+
 }
 
-.note-btns img{
-    width:fit-content;
+.note-btns>* {
+    height: 2rem;
+}
+
+.note-btns img {
+    width: fit-content;
 }
