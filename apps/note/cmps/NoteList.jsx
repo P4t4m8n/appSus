@@ -9,17 +9,17 @@ import { NoteTodosPreview } from './NoteTodosPreview.jsx'
 
 
 export function NoteList({ notes }) {
-    // console.log("notes:", notes)
-
+    
     const [cmpType, setCmpType] = useState('Note-Txt')
-
+    
+    console.log("notes:", notes[0].style.backgroundColor)
     return (
         <ul className="note-list">
             {
                 notes.map(note => 
-                    <li key={note.id} >
+                    <li key={note.id} style={{backgroundColor:note.style.backgroundColor}}>
                         <DynmicNoteCmp cmpType={note.type} info={note.info} />
-                        <section>
+                        <section className="note-btns">
                             <button>a</button>
                             <button>b</button>
                             <button>c</button>
@@ -34,16 +34,16 @@ export function NoteList({ notes }) {
 }
 
 function DynmicNoteCmp(props) {
-    console.log("props:", props)
+    // console.log("props:", props)
     switch (props.cmpType) {
         case 'note-txt':
-            return <NoteTxtPreview {...props} />
+            return <NoteTxtPreview {...props.info} />
         case 'note-img':
-            return <NoteImgPreview {...props} />
+            return <NoteImgPreview {...props.info} />
         case 'note-video':
-            return <NoteVideoPreview {...props} />
+            return <NoteVideoPreview {...props.info} />
         case 'note-todos':
-            return <NoteTodosPreview {...props} />
+            return <NoteTodosPreview {...props.info} />
 
         default:
             break;

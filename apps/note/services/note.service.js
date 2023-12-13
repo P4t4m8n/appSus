@@ -1,6 +1,6 @@
 // import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
-import {  asyncStorage } from '../../../services/async-storage.service.js'
+import { asyncStorage } from '../../../services/async-storage.service.js'
 
 const NOTES_KEY = 'noteDB'
 _createnotes()
@@ -16,7 +16,6 @@ export const noteService = {
 }
 
 function query() {
-    console.log('1')
     return asyncStorage.query(NOTES_KEY)
         .then(notes => {
             // if (filterBy.name) {
@@ -65,7 +64,7 @@ function _createnotes() {
                 type: 'note-txt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#0000dd'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -76,16 +75,16 @@ function _createnotes() {
                 type: 'note-img',
                 isPinned: false,
                 info: {
-                    url: 'http://some-img/me',
+                    url: '../../../assets/img/audi.jpg',
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#0000dd'
                 }
             },
             {
                 id: 'n103',
-                type: 'Note-todos',
+                type: 'note-todos',
                 isPinned: false,
                 info: {
                     title: 'Get my stuff together',
@@ -93,9 +92,190 @@ function _createnotes() {
                         { txt: 'Driving license', doneAt: null },
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
+                },
+                style: {
+                    backgroundColor: '#0000dd'
                 }
-            }
-        ]
+            },
+
+            {
+                id: 'n104',
+                type: 'note-video',
+                isPinned: false,
+                info: {
+                    url: "https://www.youtube.com/embed/HyWYpM_S-2c?si=33Mu4cW4PMHDtqMv",
+                    title: 'React for haters',
+                },
+                style: {
+                    backgroundColor: '#0000dd'
+                }
+            },
+            
+            {
+                id: 'n105',
+                type: 'note-txt',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#00ff00'
+                },
+                info: {
+                    txt: 'Learning JavaScript Promises'
+                }
+            },
+            {
+                id: 'n106',
+                type: 'note-img',
+                isPinned: true,
+                info: {
+                    url: '../../../assets/img/nature.jpg',
+                    title: 'Serene Nature'
+                },
+                style: {
+                    backgroundColor: '#ff0000'
+                }
+            },
+            {
+                id: 'n107',
+                type: 'note-todos',
+                isPinned: true,
+                info: {
+                    title: 'Home Improvement',
+                    todos: [
+                        { txt: 'Paint the living room', doneAt: 187222222 },
+                        { txt: 'Install new shelves', doneAt: 187333333 },
+                        { txt: 'Fix the leaky faucet', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#ffcc00'
+                }
+            },
+            {
+                id: 'n108',
+                type: 'note-video',
+                isPinned: false,
+                info: {
+                    url: 'https://www.youtube.com/embed/YE7VzlLtp-4?si=jhfiuhweifhwei',
+                    title: 'Introduction to Machine Learning'
+                },
+                style: {
+                    backgroundColor: '#9932CC'
+                }
+            },
+             
+            {
+                id: 'n109',
+                type: 'note-txt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#ff9900'
+                },
+                info: {
+                    txt: 'Mastering CSS Grid Layout'
+                }
+            },
+            {
+                id: 'n110',
+                type: 'note-img',
+                isPinned: false,
+                info: {
+                    url: '../../../assets/img/sunset.jpg',
+                    title: 'Gorgeous Sunset'
+                },
+                style: {
+                    backgroundColor: '#008080'
+                }
+            },
+            {
+                id: 'n111',
+                type: 'note-todos',
+                isPinned: true,
+                info: {
+                    title: 'Fitness Goals',
+                    todos: [
+                        { txt: 'Run 5 miles', doneAt: 187444444 },
+                        { txt: 'Complete 50 push-ups', doneAt: 187555555 },
+                        { txt: 'Yoga session', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#800080'
+                }
+            },
+            {
+                id: 'n112',
+                type: 'note-video',
+                isPinned: false,
+                info: {
+                    url: 'https://www.youtube.com/embed/1I-3vJSC-Vo?si=dsbfjbsjkdb',
+                    title: 'Introduction to Cybersecurity'
+                },
+                style: {
+                    backgroundColor: '#008000'
+                }
+            },
+
+            {
+                id: 'n113',
+                type: 'note-txt',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#ff6666'
+                },
+                info: {
+                    txt: 'Exploring Node.js Development'
+                }
+            },
+            {
+                id: 'n114',
+                type: 'note-img',
+                isPinned: true,
+                info: {
+                    url: '../../../assets/img/mountains.jpg',
+                    title: 'Majestic Mountains'
+                },
+                style: {
+                    backgroundColor: '#4B0082'
+                }
+            },
+            {
+                id: 'n115',
+                type: 'note-todos',
+                isPinned: false,
+                info: {
+                    title: 'Vacation Planning',
+                    todos: [
+                        { txt: 'Book flights', doneAt: 187666666 },
+                        { txt: 'Reserve accommodation', doneAt: 187777777 },
+                        { txt: 'Create itinerary', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#ffa500'
+                }
+            },
+            {
+                id: 'n116',
+                type: 'note-video',
+                isPinned: true,
+                info: {
+                    url: 'https://www.youtube.com/embed/zuaZXRYqRn4?si=wiqweiqwe',
+                    title: 'Artificial Intelligence Explained'
+                },
+                style: {
+                    backgroundColor: '#4682B4'
+                }
+            },
+
+
+
+
+
+        ];
+
+     
+            
+        
     }
     storageService.saveToStorage(NOTES_KEY, notes)
 }

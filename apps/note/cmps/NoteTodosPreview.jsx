@@ -1,8 +1,8 @@
 
 
 export function NoteTodosPreview({ title, todos }) {
-    console.log("todos:", todos)
-    console.log("title:", title)
+    // console.log("todos:", todos)
+    // console.log("title:", title)
 
     return (
         <div className="note-todos-con">
