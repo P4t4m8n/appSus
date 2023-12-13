@@ -22,6 +22,20 @@ export function MailDetails() {
     navigate('/mail')
   }
 
+  function onRemoveMail(mailId) {
+    mailService
+      .remove(mailId)
+      .then(() => {
+        // setMail(null)
+        onBack()
+        // showSuccessMsg(`Book Removed! ${bookId}`)
+      })
+      .catch((err) => {
+        console.error(err)
+        // showErrorMsg(`Problem Removing ${bookId}`)
+      })
+  }
+
   if (!mail) return <div>Loading...</div>
 
   return (
@@ -41,6 +55,7 @@ export function MailDetails() {
             src="../../../appSus/assets/img/mail/delete-mail.png"
             alt="Delete mail"
             title="Delete mail"
+            onClick={() => onRemoveMail(mail.id)}
           />
         </button>
       </div>
