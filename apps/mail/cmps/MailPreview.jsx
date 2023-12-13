@@ -1,4 +1,4 @@
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, navigateToMailDetails }) {
   const sentAtTimestamp = mail.sentAt
 
   const formattedSentAt = formatSentAt(sentAtTimestamp)
@@ -24,14 +24,41 @@ export function MailPreview({ mail }) {
   }
 
   return (
-    <article className="mail-preview">
-      <div className="container-mail-btns">
-        <button>Select</button>
-        <button>⭐</button>
-      </div>
-      <h2 className="mail-from">{mail.from}</h2>
-      <h2 className="mail-subject">{mail.subject}</h2>
-      <h2 className="mail-sent-at">{formattedSentAt}</h2>
-    </article>
+    <tr onClick={navigateToMailDetails}>
+      <td>
+        <div className="container-mail-btns">
+          <button>Select</button>
+          <button>⭐</button>
+        </div>
+      </td>
+      <td className="mail-from">{mail.from}</td>
+      <td className="mail-subject">{mail.subject}</td>
+      <td className="mail-sent-at">{formattedSentAt}</td>
+    </tr>
   )
 }
+
+//   return (
+//     <article className="mail-preview">
+//       <div className="container-mail-btns">
+//         <button>Select</button>
+//         <button>⭐</button>
+//       </div>
+//       <div className="mail-from">{mail.from}</div>
+//       <div className="mail-subject">{mail.subject}</div>
+//       <div className="mail-sent-at">{formattedSentAt}</div>
+//       {/* Include other elements like buttons if needed */}
+//     </article>
+//   )
+
+//   return (
+//     <article className="mail-preview">
+//       <div className="container-mail-btns">
+//         <button>Select</button>
+//         <button>⭐</button>
+//       </div>
+//       <h2 className="mail-from">{mail.from}</h2>
+//       <h2 className="mail-subject">{mail.subject}</h2>
+//       <h2 className="mail-sent-at">{formattedSentAt}</h2>
+//     </article>
+//   )
