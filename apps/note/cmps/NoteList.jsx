@@ -13,7 +13,7 @@ export function NoteList({ notes }) {
     const [cmpType, setCmpType] = useState('Note-Txt')
 
 
-    console.log("notes:", notes[0].style.backgroundColor)
+    // console.log("notes:", notes[0].style.backgroundColor)
     return (
         <ul className="note-list">
             {
