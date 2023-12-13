@@ -1,0 +1,9 @@
+.mail-details-icons {
+  display: flex;
+  width: 360px;
+}
+
+.mail-details-icons img {
+  width: 38px;
+  height: 38px;
+}

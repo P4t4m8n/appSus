@@ -1,19 +1,32 @@
 .mail-preview {
-  display: grid;
-  /* align-items: center; */
+  display: flex;
+  align-items: center;
   /* justify-content: space-between; */
-  /* text-align: left; */
-  grid-auto-flow: column;
-  grid-template-columns: 20px 1fr minmax(1fr, 200px) minmax(1fr, 200px) 20px;
+}
+
+.mail-preview > * {
+  /* margin-inline-end: 20px; */
+}
+
+/* .container-mail-btns {
+  grid-column: 1/2;
 }
 
 .mail-from {
-  /* grid-column: 2/2; */
-  justify-self: start;
-}
-
+  grid-column: 2/3;
+  /* width: 30px; */
+/* justify-self: start; */
+/* justify-content: start; */
+/* } */
+/* 
 .mail-subject {
-}
+  grid-column: 3/4;
+  /* justify-self: start; */
+/* } */
 
-.mail-sent-at {
-}
+/* .mail-sent-at {
+  grid-column: 4/5;
+  /* justify-self: start; */
+
+/* width: 200px; */
+/* }  */
