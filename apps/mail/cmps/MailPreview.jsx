@@ -24,7 +24,7 @@ export function MailPreview({ mail }) {
   }
 
   return (
-    <article className="book-preview">
+    <article className="mail-preview">
       <h2>{mail.from}</h2>
       <h2>{mail.subject}</h2>
       <h2>{formattedSentAt}</h2>
