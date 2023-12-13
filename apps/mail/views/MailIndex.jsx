@@ -1,4 +1,5 @@
 import { MailList } from '../cmps/MailList.jsx'
+import { MailSideBar } from '../cmps/MailSideBar.jsx'
 import { mailService } from '../services/mail.service.js'
 
 const { useState, useEffect } = React
@@ -21,12 +22,7 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
-      <button
-        className="btn btn-mail-compose"
-        onClick={() => navigate(`/mail/compose`)}
-      >
-        Compose
-      </button>
+      <MailSideBar />
       <MailList mails={mails} />
     </section>
   )
