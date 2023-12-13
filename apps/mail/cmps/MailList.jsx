@@ -11,3 +11,5 @@ export function MailList({ mails }) {
     </ul>
   )
 }
+
+// Todo: add 3 icons

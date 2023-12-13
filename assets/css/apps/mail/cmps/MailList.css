@@ -1,1 +1,8 @@
- /* mail list */
+/* mail list */
+
+.mail-list {
+  list-style-type: none;
+  display: grid;
+  /* grid-auto-flow: column; */
+  grid-template-columns: 20px 1fr minmax(1fr, 200px) minmax(1fr, 200px) 20px;
+}

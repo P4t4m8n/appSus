@@ -1,5 +1,19 @@
 .mail-preview {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  /* text-align: left; */
+  grid-auto-flow: column;
+  grid-template-columns: 20px 1fr minmax(1fr, 200px) minmax(1fr, 200px) 20px;
+}
+
+.mail-from {
+  /* grid-column: 2/2; */
+  justify-self: start;
+}
+
+.mail-subject {
+}
+
+.mail-sent-at {
 }
