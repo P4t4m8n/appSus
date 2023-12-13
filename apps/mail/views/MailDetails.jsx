@@ -29,19 +29,23 @@ export function MailDetails() {
       <div className="mail-details-icons">
         <button>
           <img
-            class="img-star-mail"
+            className="img-star-mail"
             src="../../../assets/img/mail/star-mail.png"
             alt="Star"
             title="Star"
           />
           <img
-            class="img-delete-mail"
+            className="img-delete-mail"
             src="../../../assets/img/mail/delete-mail.png"
             alt="Delete mail"
             title="Delete mail"
           />
         </button>
       </div>
+      <h1 className="mail-subject">{mail.subject}</h1>
+      <h3 className="mail-from">{mail.from}</h3>
+      <h3 className="mail-to">{mail.to}</h3>
+      <p className="mail-body">{mail.body}</p>
     </section>
   )
 }
