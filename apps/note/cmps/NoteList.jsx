@@ -21,11 +21,11 @@ export function NoteList({ notes }) {
                     <li key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
                         <DynmicNoteCmp cmpType={note.type} info={note.info} />
                         <section className="note-btns">
-                            <button>{<img src='assets\img\icons8-pin-50.png'></img>}</button>
+                            <button>{<img src='assets\img\icons8-pin-48.png'></img>}</button>
                             <button>{<img src='assets\img\icons8-paint-palette-48.png'></img>}</button>
                             <button>{<img src='assets\img\icons8-email-48.png'></img>}</button>
                             <button>{<img src='assets\img\icons8-pen-squared-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-trash-50.png'></img>}</button>
+                            <button>{<img src='assets\img\icons8-trash-48.png'></img>}</button>
                         </section>
                     </li>
                 )
