@@ -22,3 +22,7 @@
     right: 0;
     position: absolute;
 }
+
+.note-btns img{
+    width:fit-content;
+}
