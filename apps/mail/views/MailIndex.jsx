@@ -2,11 +2,12 @@ import { MailList } from '../cmps/MailList.jsx'
 import { mailService } from '../services/mail.service.js'
 
 const { useState, useEffect } = React
-const { Link } = ReactRouterDOM
+const { useNavigate } = ReactRouterDOM
 
 export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+  const navigate = useNavigate()
 
   useEffect(() => {
     loadMails()
@@ -20,6 +21,12 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
+      <button
+        className="btn btn-mail-compose"
+        onClick={() => navigate(`/mail/compose`)}
+      >
+        Compose
+      </button>
       <MailList mails={mails} />
     </section>
   )
