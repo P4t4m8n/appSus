@@ -24,5 +24,24 @@ export function MailDetails() {
 
   if (!mail) return <div>Loading...</div>
 
-  return <section className="mail-details"></section>
+  return (
+    <section className="mail-details">
+      <div className="mail-details-icons">
+        <button>
+          <img
+            class="img-star-mail"
+            src="../../../assets/img/mail/star-mail.png"
+            alt="Star"
+            title="Star"
+          />
+          <img
+            class="img-delete-mail"
+            src="../../../assets/img/mail/delete-mail.png"
+            alt="Delete mail"
+            title="Delete mail"
+          />
+        </button>
+      </div>
+    </section>
+  )
 }
