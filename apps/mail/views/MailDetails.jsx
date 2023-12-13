@@ -30,13 +30,15 @@ export function MailDetails() {
         <button>
           <img
             className="img-star-mail"
-            src="../../../assets/img/mail/star-mail.png"
+            src="../../../appSus/assets/img/mail/star-mail.png"
             alt="Star"
             title="Star"
           />
+        </button>
+        <button>
           <img
             className="img-delete-mail"
-            src="../../../assets/img/mail/delete-mail.png"
+            src="../../../appSus/assets/img/mail/delete-mail.png"
             alt="Delete mail"
             title="Delete mail"
           />
@@ -46,6 +48,7 @@ export function MailDetails() {
       <h3 className="mail-from">{mail.from}</h3>
       <h3 className="mail-to">{mail.to}</h3>
       <p className="mail-body">{mail.body}</p>
+      <button onClick={onBack}>Back</button>
     </section>
   )
 }
