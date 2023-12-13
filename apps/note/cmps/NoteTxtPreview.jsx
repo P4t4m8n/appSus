@@ -1,6 +1,6 @@
 
 
-export function NoteTxtPreview( {info} ) {
-    return <p className='txt-note'> {info.txt}</p>
+export function NoteTxtPreview( {txt} ) {
+    return <p className='note-txt-con'> {txt}</p>
 }
 

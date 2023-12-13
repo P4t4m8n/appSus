@@ -1,1 +1,24 @@
- /* note index */
+.note-list {
+    list-style: none;
+    columns: 4;
+}
+
+.notes-index {
+    height: 100%;
+}
+
+.note-list li {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 10rem;
+    position: relative;
+    /* height: fit-content; */
+    /* gap:1rem; */
+}
+
+.note-btns {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
