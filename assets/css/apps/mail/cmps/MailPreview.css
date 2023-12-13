@@ -8,6 +8,10 @@
   /* margin-inline-end: 20px; */
 }
 
+.status-read {
+  background-color: grey;
+}
+
 /* .container-mail-btns {
   grid-column: 1/2;
 }
