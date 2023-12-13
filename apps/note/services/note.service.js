@@ -127,7 +127,7 @@ function _createnotes() {
                 type: 'note-img',
                 isPinned: true,
                 info: {
-                    url: '../../../assets/img/nature.jpg',
+                    url: '../../../assets/img/honda.jpg',
                     title: 'Serene Nature'
                 },
                 style: {
@@ -179,7 +179,7 @@ function _createnotes() {
                 type: 'note-img',
                 isPinned: false,
                 info: {
-                    url: '../../../assets/img/sunset.jpg',
+                    url: '../../../assets/fiat.jpg',
                     title: 'Gorgeous Sunset'
                 },
                 style: {
@@ -231,7 +231,7 @@ function _createnotes() {
                 type: 'note-img',
                 isPinned: true,
                 info: {
-                    url: '../../../assets/img/mountains.jpg',
+                    url: '../../../assets/img/suzuki.jpg',
                     title: 'Majestic Mountains'
                 },
                 style: {
@@ -267,14 +267,7 @@ function _createnotes() {
                 }
             },
 
-
-
-
-
         ];
-
-     
-            
         
     }
     storageService.saveToStorage(NOTES_KEY, notes)
