@@ -19,7 +19,7 @@ export const mailService = {
 }
 
 function query(filterBy) {
-  return storageService.query(MAILS_KEY).then((mails) => {
+  return asyncStorage.query(MAILS_KEY).then((mails) => {
     if (filterBy.subject) {
       const regex = new RegExp(filterBy.subject, 'i')
       //   console.log('regex', regex)
@@ -36,18 +36,18 @@ function query(filterBy) {
 }
 
 function get(mailId) {
-  return storageService.get(MAILS_KEY, mailId)
+  return asyncStorage.get(MAILS_KEY, mailId)
 }
 
 function remove(mailId) {
-  return storageService.remove(MAILS_KEY, mailId)
+  return asyncStorage.remove(MAILS_KEY, mailId)
 }
 
 function save(mail) {
   if (mail.id) {
-    return storageService.put(MAILS_KEY, mail)
+    return asyncStorage.put(MAILS_KEY, mail)
   } else {
-    return storageService.post(MAILS_KEY, mail)
+    return asyncStorage.post(MAILS_KEY, mail)
   }
 }
 
