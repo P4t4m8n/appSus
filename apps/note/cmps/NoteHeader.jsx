@@ -1,40 +1,40 @@
 import { noteService } from "../services/note.service.js"
 import { NoteTxtAdd } from "./NoteAdd/NoteTxtAdd.jsx"
-import { NoteImgAdd } from "./NoteAdd/NoteimgAdd.jsx"
+import { NoteImgAdd } from "./NoteAdd/NoteImgAdd.jsx"
 import { NoteVideoAdd } from "./NoteAdd/NoteVideoAdd.jsx"
 import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
 const { useEffect, useState } = React
 
-export function NoteHeader() {
+export function NoteHeader({ setIsAddedNote }) {
 
     const [noteToEdit, setNoteToEdit] = useState(noteService.getNewNote())
     const [cmpType, setCmpType] = useState('note-txt')
 
 
     function handleChange({ target }) {
-        // console.log("noteToEdit:", noteToEdit)
-        console.log("target:", target)
         const field = target.name
-        let value = {}
-        switch (cmpType) {
+        let value = { txt: target.value }
 
-            case 'note-todos':
-                console.log(value)
-            default:
-                value = { txt: target.value }
-                break;
-        }
         setNoteToEdit(prevNote => ({ ...prevNote, info: value }))
     }
 
 
-    function onSubmitNote(ev) {
+    function onSubmitNote(ev, obj = {}) {
         ev.preventDefault()
+        if (cmpType !== 'note-txt') {
+            console.log("obj:", obj)
+            let value = { txt: obj.txt, todos: obj.todos }
+            setNoteToEdit(prevNote =>
+                ({ ...prevNote, info: obj, type: cmpType }))
 
+        }
+
+        console.log("noteToEdit:", noteToEdit)
         noteService
             .save(noteToEdit)
             .then(() => {
+                setIsAddedNote(IsAddedNote => !IsAddedNote)
                 // showSuccessMsg(`Note saved successfully`)
                 // navigate('/book')
                 console.log('saved')
@@ -48,6 +48,7 @@ export function NoteHeader() {
 
     return (
         <section className="note-header">
+            {console.log(noteToEdit)}
             <DynmicNoteAddCmp cmpType={cmpType} handleChange={handleChange} onSubmitNote={onSubmitNote} info={noteToEdit.info} />
             {(cmpType === 'note-txt') &&
                 <section className="add-note-btns">
@@ -61,7 +62,7 @@ export function NoteHeader() {
 }
 
 function DynmicNoteAddCmp(props) {
-    console.log("props:", props)
+    // console.log("props:", props)
     switch (props.cmpType) {
         case 'note-txt':
             return <NoteTxtAdd {...props} />
