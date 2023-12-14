@@ -14,24 +14,27 @@ export const mailService = {
   save,
   getEmptyMail,
   getFilterBy,
-  //   setFilterBy,
+  // setFilterBy,
   getDefaultFilter,
 }
 
 function query(filterBy) {
   return asyncStorage.query(MAILS_KEY).then((mails) => {
+    let filteredMails = mails
+
     if (filterBy.subject) {
-      const regex = new RegExp(filterBy.subject, 'i')
-      //   console.log('regex', regex)
-      mails = mails.filter((mail) => {
-        return regex.test(mail.subject) && mail.isRead
-      })
-    }
-    if (filterBy.isRead) {
-      mails = mails.filter((mail) => mail.isRead)
+      filteredMails = filteredMails.filter((mail) =>
+        new RegExp(filterBy.subject, 'i').test(mail.subject)
+      )
     }
 
-    return mails
+    if (filterBy.isRead !== null) {
+      filteredMails = filteredMails.filter(
+        (mail) => mail.isRead === (filterBy.isRead === 'true')
+      )
+    }
+
+    return filteredMails
   })
 }
 
@@ -74,6 +77,8 @@ function getFilterBy() {
 function getDefaultFilter() {
   return {
     subject: '',
+    from: '',
+    to: '',
     isRead: null, // 'null' means no filter is applied for 'isRead' (both 'Read' and 'Unread')
   }
 }
@@ -81,9 +86,10 @@ function getDefaultFilter() {
 // let gFilterBy = getFilterBy()
 
 // function setFilterBy(filterBy = {}) {
-//   if (filterBy.subject !== undefined) gFilterBy.subject = filterBy.subject
-//   if (filterBy.isRead !== undefined) gFilterBy.isRead = filterBy.isRead
-//   return gFilterBy
+//   if (filterBy.subject !== undefined) filterBy.subject = filterBy.subject
+//   if (filterBy.isRead !== undefined) filterBy.isRead = filterBy.isRead
+//   if (filterBy.from !== undefined) filterBy.from = filterBy.from
+//   return filterBy
 // }
 
 function _createMails() {
@@ -134,7 +140,7 @@ function _createMails() {
         id: 'OXeMG8wNsk5',
         subject: 'Invoice #45678 from Your Recent GadgetMart Purchase',
         body: 'Thank you for shopping at GadgetMart! Attached is the invoice for your recent purchase of the SmartHome Speaker. We hope you enjoy your new gadget!',
-        isRead: false,
+        isRead: true,
         sentAt: 1551284930594,
         removedAt: null,
         from: 'billing@gadgetmart.com',
@@ -164,7 +170,7 @@ function _createMails() {
         id: 'OXeMG8wNsk8',
         subject: 'This Week in Tech: Don’t Miss Our Latest Newsletter!',
         body: "Dive into this week's edition of our newsletter for the latest tech news, insights, and interviews with industry leaders. Your weekly tech digest is here!",
-        isRead: false,
+        isRead: true,
         sentAt: 1551317930594,
         removedAt: null,
         from: 'editor@techweekly.com',

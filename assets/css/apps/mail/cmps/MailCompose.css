@@ -1,0 +1,19 @@
+.mail-compose {
+}
+.form-mail-compose {
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-compose .input-to,
+.input-subject {
+  width: 25%;
+}
+
+.mail-compose textarea {
+  width: 50%;
+}
+
+.mail-compose .btn-submit-mail {
+  width: max-content;
+}

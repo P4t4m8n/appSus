@@ -3,3 +3,7 @@
 Roboto, Arial, sans-serif
 BODY
 "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif */
+
+.mail-index {
+  display: flex;
+}
