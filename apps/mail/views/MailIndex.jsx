@@ -49,8 +49,10 @@ export function MailIndex() {
         <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
       )}
 
-      <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
-      <MailList mails={mails} />
+      <div className="container-sidebar-mails">
+        <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
+        <MailList mails={mails} />
+      </div>
     </section>
   )
 }

@@ -18,3 +18,7 @@ BODY
   width: 200px;
   height: 30px;
 }
+
+.container-sidebar-mails {
+  display: flex;
+}
