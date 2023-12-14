@@ -1,13 +1,13 @@
 
+const { Fragment } = React
+export function NoteImgPreview({ note }) {
+    console.log("note:", note)
 
-export function NoteImgPreview({ url, title: txt }) {
-  
     return (
-        <div className="note-img-con">
-            <header className="img-title">{txt}</header>
-            <img src={url}></img>
-        </div>
+        <Fragment>
+            <p className="img-title">{note.info.txt}</p>
+            <img src={note.info.url}></img>
+        </Fragment>
     )
-
 }
 

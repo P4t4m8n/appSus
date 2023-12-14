@@ -2,6 +2,8 @@
 
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
+import { NoteFilter } from "../cmps/NoteFilter.jsx"
+import { NoteEdit } from "../cmps/NoteEdit.jsx"
 
 const { useState, useEffect } = React
 
@@ -9,11 +11,12 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [isAddedNote, setIsAddedNote] = useState(false)
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
 
     useEffect(() => {
-        noteService.query()
+        noteService.query(filterBy)
             .then((notes) => setNotes(notes))
-    }, [isAddedNote])
+    }, [isAddedNote,])
 
     if (!notes) return <div>Loading...</div>
 
@@ -21,14 +24,18 @@ export function NoteIndex() {
         noteService.get(noteId)
             .then(note => {
                 note.isPinned = !note.isPinned
-                noteService.save(note).then(setIsAddedNote(IsAddedNote => !IsAddedNote))
+                noteService.save(note).then(() => setFilterBy(''))
 
             })
     }
 
-    function onEmail(noteId) {
+    function onEmail(noteId) { }
 
+    function onSetFilterBy(filterBy) {
+        console.log("filterBy:", filterBy)
+        setFilterBy(filterBy)
     }
+
     function onEdit(noteId) {
         noteService.get(noteId)
             .then(note => {
@@ -46,7 +53,12 @@ export function NoteIndex() {
 
     return (
         <section className="notes-index">
-
+            <section className="note-header">
+                <div className="note-new">
+                    <NoteEdit setIsAddedNote={setIsAddedNote} note={noteService.getNewNote()} />
+                </div>
+                <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy}></NoteFilter>
+            </section>
             <NoteList setIsAddedNote={setIsAddedNote} notes={notes} togglePin={togglePin} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete}></NoteList>
         </section>
     )

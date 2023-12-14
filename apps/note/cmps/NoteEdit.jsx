@@ -4,7 +4,7 @@ import { NoteImgAdd } from "./NoteAdd/NoteImgAdd.jsx"
 import { NoteVideoAdd } from "./NoteAdd/NoteVideoAdd.jsx"
 import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
-const { useEffect, useState } = React
+const { useEffect, useState, Fragment } = React
 
 export function NoteEdit({ setIsAddedNote, note }) {
     // console.log("note:", note)
@@ -65,16 +65,14 @@ export function NoteEdit({ setIsAddedNote, note }) {
         setNoteToEdit(prevNote => ({ ...prevNote, info, type: cmpType }))
     }
 
-
-
-
     function onSubmitNote(ev) {
         ev.preventDefault()
+        noteToEdit.isEdit = false
         noteService
             .save(noteToEdit)
             .then(() => {
                 setNoteToEdit(noteService.getNewNote())
-                setIsAddedNote(IsAddedNote => !IsAddedNote)
+                setIsAddedNote(IsAddedNote => (!IsAddedNote))
                 // showSuccessMsg(`Note saved successfully`)
                 // navigate('/book')
                 console.log('saved')
@@ -85,20 +83,32 @@ export function NoteEdit({ setIsAddedNote, note }) {
             })
     }
 
-    return (
-        <section className="note-header">
+    function removeTodo(ev) {
+        // ev.stopPropagation()
+        // ev.preventDefault()
+        var value = noteToEdit.info.todos.toSpliced(ev.target.value, 1)
+        var info = { ...noteToEdit.info, todos: value }
+        setNoteToEdit(prevNote => ({ ...prevNote, info }))
+    }
 
+
+
+    return (
+        <Fragment>
             <DynmicNoteAddCmp cmpType={cmpType} onSubmitNote={onSubmitNote} note={noteToEdit}
-                setNoteToEdit={setNoteToEdit} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
-            {(cmpType === 'note-txt') &&
+                setNoteToEdit={setNoteToEdit} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
+            {
+
                 <section className="add-note-btns">
-                    <button onClick={() => setCmpType('note-todos')}>todo</button>
-                    <button onClick={() => setCmpType('note-img')}>img</button>
-                    <button onClick={() => setCmpType('note-video')}>video</button>
+                    <button onClick={() => setCmpType('note-txt')}>{<img src='assets\img\txt.png'></img>}</button>
+                    <button onClick={() => setCmpType('note-todos')}>{<img src='assets\img\todo.png'></img>}</button>
+                    <button onClick={() => setCmpType('note-img')}>{<img src='assets\img\img.png'></img>}</button>
+                    <button onClick={() => setCmpType('note-video')}>{<img src='assets\img\video.png'></img>}</button>
+                    <button onClick={() => onChgColor()}>{<img src='assets\img\color.png'></img>}</button>
                 </section>
             }
-               <button onClick={() => onChgColor()}>{<img src='assets\img\icons8-paint-palette-48.png'></img>}</button>
-        </section>
+        </Fragment>
+
     )
 }
 

@@ -16,16 +16,11 @@ export const noteService = {
 
 }
 
-function query() {
+function query(filterBy) {
+    console.log("filterBy q:", filterBy)
     return asyncStorage.query(NOTES_KEY)
         .then(notes => {
-            // if (filterBy.name) {
-            //     const regex = new RegExp(filterBy.name, 'i')
-            //     notes = notes.filter(note => regex.test(note.txt))
-            // }
-            // if (filterBy.price) {
-            //     notes = notes.filter(note => note.listPrice.amount >= filterBy.price)
-            // }
+            if (filterBy !== '') notes = notes.filter(note => note.type === filterBy)
             var pins = notes.filter((note) => note.isPinned)
             var noPin = notes.filter((note) => !note.isPinned)
             notes = pins.concat(noPin)
@@ -57,7 +52,7 @@ function getNewNote(type = 'note-txt', isPinned = false, isEdit = false, style =
 }
 
 function getDefaultFilter() {
-    return { type: '', date: '' }
+    return ''
 }
 
 function _createnotes() {
@@ -66,128 +61,30 @@ function _createnotes() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: 'n101',
+                id: 'n109',
                 createdAt: 1112222,
                 type: 'note-txt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#0000dd'
-                },
-                info: {
-                    txt: 'Fullstack Me Baby!'
-                }
-            },
-            {
-                id: 'n102',
-                type: 'note-img',
                 isPinned: false,
-                info: {
-                    url: '../../../assets/img/audi.jpg',
-                    txt: 'Bobi and Me'
-                },
+                isEdit: false,
                 style: {
-                    backgroundColor: '#0000dd'
-                }
-            },
-            {
-                id: 'n103',
-                type: 'note-todos',
-                isPinned: false,
-                info: {
-                    txt: 'Get my stuff together',
-                    todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
-                    ]
-                },
-                style: {
-                    backgroundColor: '#0000dd'
-                }
-            },
-
-            {
-                id: 'n104',
-                type: 'note-video',
-                isPinned: false,
-                info: {
-                    url: "https://www.youtube.com/embed/HyWYpM_S-2c?si=33Mu4cW4PMHDtqMv",
-                    txt: 'React for haters',
-                },
-                style: {
-                    backgroundColor: '#0000dd'
-                }
-            },
-
-            {
-                id: 'n105',
-                type: 'note-txt',
-                isPinned: false,
-                style: {
-                    backgroundColor: '#00ff00'
+                    backgroundColor: '#008080'
                 },
                 info: {
-                    txt: 'Learning JavaScript Promises'
-                }
-            },
-            {
-                id: 'n106',
-                type: 'note-img',
-                isPinned: true,
-                info: {
-                    url: '../../../assets/img/honda.jpg',
-                    txt: 'Serene Nature'
-                },
-                style: {
-                    backgroundColor: '#ff0000'
-                }
-            },
-            {
-                id: 'n107',
-                type: 'note-todos',
-                isPinned: true,
-                info: {
-                    txt: 'Home Improvement',
-                    todos: [
-                        { txt: 'Paint the living room', doneAt: 187222222 },
-                        { txt: 'Install new shelves', doneAt: 187333333 },
-                        { txt: 'Fix the leaky faucet', doneAt: null }
-                    ]
-                },
-                style: {
-                    backgroundColor: '#ffcc00'
-                }
-            },
-            {
-                id: 'n108',
-                type: 'note-video',
-                isPinned: false,
-                info: {
-                    url: 'https://www.youtube.com/embed/YE7VzlLtp-4?si=jhfiuhweifhwei',
-                    txt: 'Introduction to Machine Learning'
-                },
-                style: {
-                    backgroundColor: '#9932CC'
-                }
-            },
-
-            {
-                id: 'n109',
-                type: 'note-txt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#ff9900'
-                },
-                info: {
-                    txt: 'Mastering CSS Grid Layout'
+                    txt: 'Cooking recipes for the week',
+                    url: '',
+                    todos: []
                 }
             },
             {
                 id: 'n110',
+                createdAt: 1112222,
                 type: 'note-img',
                 isPinned: false,
+                isEdit: false,
                 info: {
-                    url: '../../../assets/img/fiat.jpg',
-                    txt: 'Gorgeous Sunset'
+                    url: '../../../assets/img/audi.jpg',
+                    txt: 'Serene Beach Sunset',
+                    todos: []
                 },
                 style: {
                     backgroundColor: '#008080'
@@ -195,14 +92,79 @@ function _createnotes() {
             },
             {
                 id: 'n111',
+                createdAt: 1112222,
+                type: 'note-todos',
+                isPinned: false,
+                isEdit: false,
+                info: {
+                    txt: 'Home improvement tasks',
+                    url: '',
+                    todos: [
+                        { txt: 'Paint the living room', doneAt: 187111115 },
+                        { txt: 'Fix leaking faucet', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#008080'
+                }
+            },
+            {
+                id: 'n112',
+                createdAt: 1112222,
+                type: 'note-video',
+                isPinned: false,
+                isEdit: false,
+                info: {
+                    url: 'https://www.youtube.com/embed/B-kxUMHBxNo?si=33Mu4cW4PMHDtqMv',
+                    txt: 'Introduction to Data Science',
+                    todos: []
+                },
+                style: {
+                    backgroundColor: '#008080'
+                }
+            },
+            {
+                id: 'n113',
+                createdAt: 1112222,
+                type: 'note-txt',
+                isPinned: false,
+                isEdit: false,
+                style: {
+                    backgroundColor: '#800080'
+                },
+                info: {
+                    txt: 'Mindfulness meditation techniques',
+                    url: '',
+                    todos: []
+                }
+            },
+            {
+                id: 'n114',
+                createdAt: 1112222,
+                type: 'note-img',
+                isPinned: false,
+                isEdit: false,
+                info: {
+                    url: '../../../assets/img/fiat.jpg',
+                    txt: 'Majestic Mountain Range',
+                    todos: []
+                },
+                style: {
+                    backgroundColor: '#800080'
+                }
+            },
+            {
+                id: 'n115',
+                createdAt: 1112222,
                 type: 'note-todos',
                 isPinned: true,
+                isEdit: false,
                 info: {
-                    txt: 'Fitness Goals',
+                    txt: 'Work-related tasks',
+                    url: '',
                     todos: [
-                        { txt: 'Run 5 miles', doneAt: 187444444 },
-                        { txt: 'Complete 50 push-ups', doneAt: 187555555 },
-                        { txt: 'Yoga session', doneAt: null }
+                        { txt: 'Complete project report', doneAt: null },
+                        { txt: 'Schedule team meeting', doneAt: 187111116 }
                     ]
                 },
                 style: {
@@ -210,71 +172,86 @@ function _createnotes() {
                 }
             },
             {
-                id: 'n112',
+                id: 'n116',
+                createdAt: 1112222,
                 type: 'note-video',
                 isPinned: false,
+                isEdit: false,
                 info: {
-                    url: 'https://www.youtube.com/embed/1I-3vJSC-Vo?si=dsbfjbsjkdb',
-                    txt: 'Introduction to Cybersecurity'
+                    url: 'https://www.youtube.com/embed/zR9sY83Nqd8?si=33Mu4cW4PMHDtqMv',
+                    txt: 'Python Programming Basics',
+                    todos: []
                 },
                 style: {
-                    backgroundColor: '#008000'
+                    backgroundColor: '#800080'
                 }
             },
-
             {
-                id: 'n113',
+                id: 'n117',
+                createdAt: 1112222,
                 type: 'note-txt',
                 isPinned: false,
+                isEdit: false,
                 style: {
-                    backgroundColor: '#ff6666'
+                    backgroundColor: '#ff4500'
                 },
                 info: {
-                    txt: 'Exploring Node.js Development'
+                    txt: 'Travel bucket list',
+                    url: '',
+                    todos: []
                 }
             },
             {
-                id: 'n114',
+                id: 'n118',
+                createdAt: 1112222,
                 type: 'note-img',
-                isPinned: true,
+                isPinned: false,
+                isEdit: false,
                 info: {
-                    url: '../../../assets/img/suzuki.jpg',
-                    txt: 'Majestic Mountains'
+                    url: '../../../assets/img/honda.jpg',
+                    txt: 'City Skyline at Night',
+                    todos: []
                 },
                 style: {
-                    backgroundColor: '#4B0082'
+                    backgroundColor: '#ff4500'
                 }
             },
             {
-                id: 'n115',
+                id: 'n119',
+                createdAt: 1112222,
                 type: 'note-todos',
                 isPinned: false,
+                isEdit:false,
                 info: {
-                    txt: 'Vacation Planning',
+                    txt: 'Fitness goals',
+                    url: '',
                     todos: [
-                        { txt: 'Book flights', doneAt: 187666666 },
-                        { txt: 'Reserve accommodation', doneAt: 187777777 },
-                        { txt: 'Create itinerary', doneAt: null }
+                        { txt: 'Run 5 miles', doneAt: 187111118 },
+                        { txt: 'Try a new workout class', doneAt: null }
                     ]
                 },
                 style: {
-                    backgroundColor: '#ffa500'
+                    backgroundColor: '#ff4500'
                 }
             },
             {
-                id: 'n116',
+                id: 'n120',
+                createdAt: 1112222,
                 type: 'note-video',
-                isPinned: true,
+                isPinned: false,
+                isEdit: false,
                 info: {
-                    url: 'https://www.youtube.com/embed/zuaZXRYqRn4?si=wiqweiqwe',
-                    txt: 'Artificial Intelligence Explained'
+                    url: 'https://www.youtube.com/embed/0pThnRneDjw?si=33Mu4cW4PMHDtqMv',
+                    txt: 'Artificial Intelligence Explained',
+                    todos: []
                 },
                 style: {
-                    backgroundColor: '#4682B4'
+                    backgroundColor: '#ff4500'
                 }
-            },
+            }
 
-        ];
+
+        ]
 
     }
     storageService.saveToStorage(NOTES_KEY, notes)
