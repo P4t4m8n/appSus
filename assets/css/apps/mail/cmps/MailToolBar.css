@@ -10,3 +10,7 @@
 .mail-row:hover .mail-toolbar {
   display: block;
 }
+
+.mail-toolbar .btn {
+  background-color: red;
+}

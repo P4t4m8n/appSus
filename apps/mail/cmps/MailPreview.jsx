@@ -25,6 +25,14 @@ export function MailPreview({ mail, navigateToMailDetails }) {
     }
   }
 
+  function handleToolbarClick(event) {
+    event.stopPropagation()
+  }
+
+  function handleContainerClick(event) {
+    event.stopPropagation()
+  }
+
   const readStatus = mail.isRead ? 'read' : 'unread'
   return (
     <tr
@@ -32,15 +40,23 @@ export function MailPreview({ mail, navigateToMailDetails }) {
       className={`mail-row status-${readStatus}`}
     >
       <td>
-        <div className="container-mail-btns">
-          <button>Select</button>
-          <button>⭐</button>
+        <div className="container-mail-btns" onClick={handleContainerClick}>
+          <button className="select-btn">
+            <img
+              src="../../../appSus/assets/img/mail/ToolBar/checkbox.png"
+              alt="Select"
+              title="Select"
+            />
+          </button>
+          <button className="star-btn"></button>
         </div>
       </td>
       <td className="mail-from">{mail.from}</td>
       <td className="mail-subject">{mail.subject}</td>
       <td className="mail-sent-at">{formattedSentAt}</td>
-      <MailToolBar mailId={mail.id} />
+      <td>
+        <MailToolBar mailId={mail.id} onClick={handleToolbarClick} />
+      </td>
     </tr>
   )
 }
