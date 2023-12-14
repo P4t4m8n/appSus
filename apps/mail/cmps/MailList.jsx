@@ -10,7 +10,7 @@ export function MailList({ mails }) {
   }
 
   return (
-    <section className="mail-list">
+    <main className="mail-list">
       <table>
         <tbody>
           {mails.map((mail) => (
@@ -22,7 +22,7 @@ export function MailList({ mails }) {
           ))}
         </tbody>
       </table>
-    </section>
+    </main>
 
     // <ul className="mail-list">
     //   {mails.map((mail) => (

@@ -18,23 +18,45 @@ export const mailService = {
   getDefaultFilter,
 }
 
-function query(filterBy) {
+function query({ globalSearch, ...filterBy }) {
   return asyncStorage.query(MAILS_KEY).then((mails) => {
-    let filteredMails = mails
+    return mails.filter((mail) => {
+      // Check for individual filters
+      if (
+        filterBy.subject &&
+        !new RegExp(filterBy.subject, 'i').test(mail.subject)
+      ) {
+        return false
+      }
+      if (filterBy.from && !new RegExp(filterBy.from, 'i').test(mail.from)) {
+        return false
+      }
+      if (filterBy.to && !new RegExp(filterBy.to, 'i').test(mail.to)) {
+        return false
+      }
+      if (
+        filterBy.isRead !== '' &&
+        mail.isRead.toString() !== filterBy.isRead
+      ) {
+        return false
+      }
+      if (filterBy.body && !new RegExp(filterBy.body, 'i').test(mail.body)) {
+        return false
+      }
 
-    if (filterBy.subject) {
-      filteredMails = filteredMails.filter((mail) =>
-        new RegExp(filterBy.subject, 'i').test(mail.subject)
-      )
-    }
+      // Global search logic
+      if (globalSearch) {
+        const searchRegex = new RegExp(globalSearch, 'i')
+        return (
+          searchRegex.test(mail.subject) ||
+          searchRegex.test(mail.from) ||
+          searchRegex.test(mail.to) ||
+          searchRegex.test(mail.body)
+        )
+      }
 
-    if (filterBy.isRead !== null) {
-      filteredMails = filteredMails.filter(
-        (mail) => mail.isRead === (filterBy.isRead === 'true')
-      )
-    }
-
-    return filteredMails
+      return true
+    })
   })
 }
 
@@ -79,18 +101,10 @@ function getDefaultFilter() {
     subject: '',
     from: '',
     to: '',
-    isRead: null, // 'null' means no filter is applied for 'isRead' (both 'Read' and 'Unread')
+    body: '',
+    isRead: '', // Represents 'All'
   }
 }
-
-// let gFilterBy = getFilterBy()
-
-// function setFilterBy(filterBy = {}) {
-//   if (filterBy.subject !== undefined) filterBy.subject = filterBy.subject
-//   if (filterBy.isRead !== undefined) filterBy.isRead = filterBy.isRead
-//   if (filterBy.from !== undefined) filterBy.from = filterBy.from
-//   return filterBy
-// }
 
 function _createMails() {
   let mails = storageService.loadFromStorage(MAILS_KEY)

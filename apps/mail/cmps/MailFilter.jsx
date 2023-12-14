@@ -10,22 +10,10 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
   }, [localFilter, onSetFilterBy])
 
   function handleChange({ target }) {
-    const { name, value, type, checked } = target
-    let newValue = type === 'checkbox' ? checked : value
-
-    // Special handling for the 'isRead' checkbox to allow null state
-    if (name === 'isRead') {
-      newValue =
-        localFilter.isRead === null
-          ? true
-          : localFilter.isRead === true
-          ? false
-          : null
-    }
-
+    const { name, value } = target
     setLocalFilter((prev) => ({
       ...prev,
-      [name]: newValue,
+      [name]: value,
     }))
   }
 
@@ -47,6 +35,14 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
         />
 
         <input
+          value={localFilter.body}
+          onChange={handleChange}
+          type="text"
+          placeholder="Body"
+          name="body"
+        />
+
+        <input
           value={localFilter.from}
           onChange={handleChange}
           type="text"
@@ -62,13 +58,15 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
           name="to"
         />
 
-        <input
-          checked={localFilter.isRead === true} // checked only if true
-          onChange={handleChange}
-          type="checkbox"
+        <select
           name="isRead"
-        />
-        <label htmlFor="isRead">Is Read</label>
+          value={localFilter.isRead}
+          onChange={handleChange}
+        >
+          <option value="">All</option>
+          <option value="true">Read</option>
+          <option value="false">Unread</option>
+        </select>
 
         <button type="submit">Apply Filters</button>
       </form>

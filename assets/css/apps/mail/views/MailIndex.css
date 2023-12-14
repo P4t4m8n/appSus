@@ -6,4 +6,19 @@ BODY
 
 .mail-index {
   display: flex;
+  flex-direction: column;
+}
+
+.input-global-search {
+  width: 200px;
+  height: 30px;
+}
+
+.btn-toggle-filter {
+  width: 200px;
+  height: 30px;
+}
+
+.container-sidebar-mails {
+  display: flex;
 }

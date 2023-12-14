@@ -9,19 +9,17 @@ const { useNavigate } = ReactRouterDOM
 export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+  const [globalSearch, setGlobalSearch] = useState('')
+  const [showFilter, setShowFilter] = useState(false)
+
   const navigate = useNavigate()
 
   useEffect(() => {
     loadMails()
-  }, [filterBy])
+  }, [filterBy, globalSearch])
 
-  // In MailIndex component
   function loadMails() {
-    console.log('Loading mails with filter:', filterBy) // Add this line
-    mailService.query(filterBy).then((mails) => {
-      console.log('Loaded mails:', mails) // Add this line
-      setMails(mails)
-    })
+    mailService.query({ ...filterBy, globalSearch }).then(setMails)
   }
 
   function onSetFilterBy(newFilter) {
@@ -32,9 +30,29 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
-      <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-      <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
-      <MailList mails={mails} />
+      <input
+        className="input-global-search"
+        type="text"
+        placeholder="Global Search..."
+        value={globalSearch}
+        onChange={(e) => setGlobalSearch(e.target.value)}
+      />
+
+      <button
+        className="btn btn-toggle-filter"
+        onClick={() => setShowFilter(!showFilter)}
+      >
+        Toggle Filter
+      </button>
+
+      {showFilter && (
+        <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+      )}
+
+      <div className="container-sidebar-mails">
+        <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
+        <MailList mails={mails} />
+      </div>
     </section>
   )
 }
