@@ -10,6 +10,7 @@ export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
   const [globalSearch, setGlobalSearch] = useState('')
+  const [showFilter, setShowFilter] = useState(false)
 
   const navigate = useNavigate()
 
@@ -30,13 +31,24 @@ export function MailIndex() {
   return (
     <section className="mail-index">
       <input
+        className="input-global-search"
         type="text"
         placeholder="Global Search..."
         value={globalSearch}
         onChange={(e) => setGlobalSearch(e.target.value)}
       />
 
-      <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+      <button
+        className="btn btn-toggle-filter"
+        onClick={() => setShowFilter(!showFilter)}
+      >
+        Toggle Filter
+      </button>
+
+      {showFilter && (
+        <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+      )}
+
       <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
       <MailList mails={mails} />
     </section>
