@@ -8,11 +8,12 @@ const { useState, useEffect } = React
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
+    const [isAddedNote, setIsAddedNote] = useState(false)
 
     useEffect(() => {
         noteService.query()
             .then((notes) => setNotes(notes))
-    }, [])
+    }, [isAddedNote])
 
     if (!notes) return <div>Loading...</div>
 
@@ -23,7 +24,7 @@ export function NoteIndex() {
 
     return (
         <section className="notes-index">
-            <NoteHeader  ></NoteHeader>
+            <NoteHeader setIsAddedNote={setIsAddedNote}  ></NoteHeader>
             <NoteList notes={notes}></NoteList>
         </section>
     )

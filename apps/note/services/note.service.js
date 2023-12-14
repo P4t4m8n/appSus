@@ -20,7 +20,7 @@ function query() {
         .then(notes => {
             // if (filterBy.name) {
             //     const regex = new RegExp(filterBy.name, 'i')
-            //     notes = notes.filter(note => regex.test(note.title))
+            //     notes = notes.filter(note => regex.test(note.txt))
             // }
             // if (filterBy.price) {
             //     notes = notes.filter(note => note.listPrice.amount >= filterBy.price)
@@ -41,6 +41,7 @@ function save(note) {
     if (note.id) {
         return asyncStorage.put(NOTES_KEY, note)
     } else {
+        console.log("note:", note)
         return asyncStorage.post(NOTES_KEY, note)
     }
 }
@@ -87,7 +88,7 @@ function _createnotes() {
                 type: 'note-todos',
                 isPinned: false,
                 info: {
-                    title: 'Get my stuff together',
+                    txt: 'Get my stuff together',
                     todos: [
                         { txt: 'Driving license', doneAt: null },
                         { txt: 'Coding power', doneAt: 187111111 }
@@ -104,7 +105,7 @@ function _createnotes() {
                 isPinned: false,
                 info: {
                     url: "https://www.youtube.com/embed/HyWYpM_S-2c?si=33Mu4cW4PMHDtqMv",
-                    title: 'React for haters',
+                    txt: 'React for haters',
                 },
                 style: {
                     backgroundColor: '#0000dd'
@@ -128,7 +129,7 @@ function _createnotes() {
                 isPinned: true,
                 info: {
                     url: '../../../assets/img/honda.jpg',
-                    title: 'Serene Nature'
+                    txt: 'Serene Nature'
                 },
                 style: {
                     backgroundColor: '#ff0000'
@@ -139,7 +140,7 @@ function _createnotes() {
                 type: 'note-todos',
                 isPinned: true,
                 info: {
-                    title: 'Home Improvement',
+                    txt: 'Home Improvement',
                     todos: [
                         { txt: 'Paint the living room', doneAt: 187222222 },
                         { txt: 'Install new shelves', doneAt: 187333333 },
@@ -156,7 +157,7 @@ function _createnotes() {
                 isPinned: false,
                 info: {
                     url: 'https://www.youtube.com/embed/YE7VzlLtp-4?si=jhfiuhweifhwei',
-                    title: 'Introduction to Machine Learning'
+                    txt: 'Introduction to Machine Learning'
                 },
                 style: {
                     backgroundColor: '#9932CC'
@@ -180,7 +181,7 @@ function _createnotes() {
                 isPinned: false,
                 info: {
                     url: '../../../assets/fiat.jpg',
-                    title: 'Gorgeous Sunset'
+                    txt: 'Gorgeous Sunset'
                 },
                 style: {
                     backgroundColor: '#008080'
@@ -191,7 +192,7 @@ function _createnotes() {
                 type: 'note-todos',
                 isPinned: true,
                 info: {
-                    title: 'Fitness Goals',
+                    txt: 'Fitness Goals',
                     todos: [
                         { txt: 'Run 5 miles', doneAt: 187444444 },
                         { txt: 'Complete 50 push-ups', doneAt: 187555555 },
@@ -208,7 +209,7 @@ function _createnotes() {
                 isPinned: false,
                 info: {
                     url: 'https://www.youtube.com/embed/1I-3vJSC-Vo?si=dsbfjbsjkdb',
-                    title: 'Introduction to Cybersecurity'
+                    txt: 'Introduction to Cybersecurity'
                 },
                 style: {
                     backgroundColor: '#008000'
@@ -232,7 +233,7 @@ function _createnotes() {
                 isPinned: true,
                 info: {
                     url: '../../../assets/img/suzuki.jpg',
-                    title: 'Majestic Mountains'
+                    txt: 'Majestic Mountains'
                 },
                 style: {
                     backgroundColor: '#4B0082'
@@ -243,7 +244,7 @@ function _createnotes() {
                 type: 'note-todos',
                 isPinned: false,
                 info: {
-                    title: 'Vacation Planning',
+                    txt: 'Vacation Planning',
                     todos: [
                         { txt: 'Book flights', doneAt: 187666666 },
                         { txt: 'Reserve accommodation', doneAt: 187777777 },
@@ -260,7 +261,7 @@ function _createnotes() {
                 isPinned: true,
                 info: {
                     url: 'https://www.youtube.com/embed/zuaZXRYqRn4?si=wiqweiqwe',
-                    title: 'Artificial Intelligence Explained'
+                    txt: 'Artificial Intelligence Explained'
                 },
                 style: {
                     backgroundColor: '#4682B4'

@@ -1,50 +1,50 @@
 import { NoteTxtAdd } from "./NoteTxtAdd.jsx"
+const { useEffect, useState } = React
 
 
-export function NoteTodosAdd({ handleChange, onSubmitNote, info }) {
- 
+export function NoteTodosAdd({ onSubmitNote, info }) {
 
-    if (!info.todos) info.todos = [{ txt: 'List item' }]
+    const [todos, setTodos] = useState([{ txt: 'List item' }])
+    const [title, setTitle] = useState(info.txt)
+    // console.log("todos:", todos)
+    if (todos[todos.length - 1].txt !== 'List item') setTodos(todos.push({ txt: 'List item' }))
+
 
 
     function handleChange({ target }) {
-        // console.log("noteToEdit:", noteToEdit)
-        console.log("target:", target)
         const field = target.name
         let value = {}
-        switch (cmpType) {
-
-            case 'note-todos':
-                console.log(value)
-            default:
-                value = { txt: target.value }
-                break;
+        if (field === 'title') setTitle(target.value)
+        else {
+            value = { txt: target.value }
+            setTodos(todos.toSpliced(field, 1, value))
         }
-        setNoteToEdit(prevNote => ({ ...prevNote, info: value }))
     }
+
 
 
     return (
         <ul className="note-add-todo">
             <li>
-                <form className="note-add-txt" onSubmit={onSubmitNote} >
-                    <label htmlFor='txt'></label>
+                <form className="note-add-txt" >
+                    <label htmlFor='title'></label>
                     <input
-                        value={info.txt}
+                        value={title}
                         onChange={handleChange}
                         type='text'
                         placeholder='Take a Note'
-                        id='txt'
-                        name='txt'
+                        id='title'
+                        name='title'
                         required>
                     </input>
-                    <button>Save</button>
+
                 </form>
             </li>
             {
-                info.todos.map((todo, idx) =>
+                todos.map((todo, idx) =>
                     <li key={idx}>
-                        <form className="note-add-txt" onSubmit={onSubmitNote} >
+                        {console.log()}
+                        <form className="note-add-txt"  >
                             <label htmlFor='txt'></label>
                             <input
                                 value={todo.txt}
@@ -55,13 +55,13 @@ export function NoteTodosAdd({ handleChange, onSubmitNote, info }) {
                                 name={idx}
                                 required>
                             </input>
-                            <button>Save</button>
                         </form>
                     </li>
                 )
 
             }
-            <button onClick="onAddTodo()">Add</button>
+            {/* <button onClick="onAddTodo()">Add</button> */}
+            <button onClick={() => onSubmitNote(event, { todos: todos, txt: title })}>Save</button>
         </ul>
     )
 }
