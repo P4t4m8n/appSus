@@ -15,3 +15,22 @@
 .mail-list table {
   width: 100%;
 }
+
+.mail-list .mail-row {
+  font-size: 16px;
+  font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  padding: 10px;
+  color: #202124;
+  /* background-color: #f2f6fc; */
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+}
+
+.mail-list .mail-row td {
+  padding: 10px 0;
+  border: none;
+}
+
+.mail-list .mail-row:hover {
+  box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
+    0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}

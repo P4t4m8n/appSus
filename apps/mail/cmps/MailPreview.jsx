@@ -25,7 +25,10 @@ export function MailPreview({ mail, navigateToMailDetails }) {
 
   const readStatus = mail.isRead ? 'read' : 'unread'
   return (
-    <tr onClick={navigateToMailDetails} className={`status-${readStatus}`}>
+    <tr
+      onClick={navigateToMailDetails}
+      className={`mail-row status-${readStatus}`}
+    >
       <td>
         <div className="container-mail-btns">
           <button>Select</button>

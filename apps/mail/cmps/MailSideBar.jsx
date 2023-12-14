@@ -1,4 +1,4 @@
-const { NavLink } = ReactRouterDOM
+const { NavLink, useNavigate } = ReactRouterDOM
 
 export function MailSideBar({ filterBy, setFilterBy }) {
   function handleSentClick() {}
