@@ -6,29 +6,39 @@ import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
 const { useEffect, useState } = React
 
-export function NoteHeader({ setIsAddedNote }) {
+export function NoteEdit({ setIsAddedNote, note }) {
+    // console.log("note:", note)
 
-    const [noteToEdit, setNoteToEdit] = useState(noteService.getNewNote())
-    const [cmpType, setCmpType] = useState('note-txt')
+    const [noteToEdit, setNoteToEdit] = useState(note)
+    const [cmpType, setCmpType] = useState(note.type)
 
-    // useEffect(() => {
-    //     if (cmpType === 'note-img') setNoteToEdit((prevNote) => ({ ...prevNote, info: { txt: prevNote.info.txt, url: '' } }))
-    // }, [cmpType])
+    function onChgColor(noteId, color) {
+        useEffect(() => {
+            noteService.get(noteId)
+                .then(note => setNoteToEdit(note))
+                .then(prevNoteToEdit => ({ ...prevNoteToEdit, style: { bgc: color } }))
+        })
+    }
+
+    function onEmail(noteId) {
+        //link to emil with params
+    }
 
     function handleChange({ target }) {
         let value = target.value
-        setNoteToEdit(prevNote => ({ ...prevNote, [field]: value }))
+        let info = { ...noteToEdit.info, txt: value }
+        setNoteToEdit(prevNote => ({ ...prevNote, info }))
     }
 
     function handleChangeUrl({ target }) {
         var field = target.name
         var value = ''
+
         if (field === 'url') value = URL.createObjectURL(target.files[0])
 
         else if (field === 'urlYouTube') {
             field = 'url'
             value = target.value
-
         }
 
         else value = target.value
@@ -37,7 +47,6 @@ export function NoteHeader({ setIsAddedNote }) {
     }
 
     function handleChangeTodos({ target }) {
-        let todos
         let field = target.name
         let value
         let info
@@ -57,11 +66,6 @@ export function NoteHeader({ setIsAddedNote }) {
     }
 
 
-    // function fixUrl(url) {
-    //     const regex = /youtu\.be\/([^\?]+)/
-    //     return url.replace(regex, 'www.youtube.com/embed/$1');
-
-    // }
 
 
     function onSubmitNote(ev) {
@@ -69,6 +73,7 @@ export function NoteHeader({ setIsAddedNote }) {
         noteService
             .save(noteToEdit)
             .then(() => {
+                setNoteToEdit(noteService.getNewNote())
                 setIsAddedNote(IsAddedNote => !IsAddedNote)
                 // showSuccessMsg(`Note saved successfully`)
                 // navigate('/book')
@@ -79,8 +84,6 @@ export function NoteHeader({ setIsAddedNote }) {
                 // showErrorMsg("Couldn't save Note")
             })
     }
-
-
 
     return (
         <section className="note-header">
@@ -94,6 +97,7 @@ export function NoteHeader({ setIsAddedNote }) {
                     <button onClick={() => setCmpType('note-video')}>video</button>
                 </section>
             }
+               <button onClick={() => onChgColor()}>{<img src='assets\img\icons8-paint-palette-48.png'></img>}</button>
         </section>
     )
 }
@@ -113,4 +117,9 @@ function DynmicNoteAddCmp(props) {
         default:
             break;
     }
+}
+function fixUrl(url) {
+    const regex = /youtu\.be\/([^\?]+)/
+    return url.replace(regex, 'www.youtube.com/embed/$1');
+
 }

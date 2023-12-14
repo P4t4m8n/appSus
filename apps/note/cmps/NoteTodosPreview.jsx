@@ -9,8 +9,8 @@ export function NoteTodosPreview({ title: txt, todos }) {
             <header>{txt}</header>
             <ul className="todos-list">
                 {
-                    todos.map(todo =>
-                        <li key={todo.txt} >
+                    todos.map((todo,idx )=>
+                        <li key={idx} >
                             <p>{todo.txt}</p>
                             <button>X</button>
                         </li>)

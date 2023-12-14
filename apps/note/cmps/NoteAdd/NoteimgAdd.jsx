@@ -1,18 +1,18 @@
 
 
-export function NoteImgAdd({ handleChangeImg, onSubmitNote, note }) {
+export function NoteImgAdd({ handleChangeUrl, onSubmitNote, note }) {
 
 
     return (
         <div>
             <form className="note-add-txt" >
-                <label htmlFor='title'></label>
+                <label htmlFor='txt'></label>
                 <input
                     value={note.info.txt}
-                    onChange={handleChangeImg}
+                    onChange={handleChangeUrl}
                     type='text'
                     placeholder='Take a Note'
-                    id='title'
+                    id='txt'
                     name='txt'
                     required>
                 </input>
@@ -24,7 +24,7 @@ export function NoteImgAdd({ handleChangeImg, onSubmitNote, note }) {
                 type="file"
                 name="url"
                 // value={note.info.url}
-                onChange={handleChangeImg}
+                onChange={handleChangeUrl}
             />
             <button onClick={onSubmitNote}>Save</button>
         </div>

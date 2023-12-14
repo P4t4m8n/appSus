@@ -26,6 +26,9 @@ function query() {
             // if (filterBy.price) {
             //     notes = notes.filter(note => note.listPrice.amount >= filterBy.price)
             // }
+            var pins = notes.filter((note) => note.isPinned)
+            var noPin = notes.filter((note) => !note.isPinned)
+            notes = pins.concat(noPin)
             return notes
         })
 }

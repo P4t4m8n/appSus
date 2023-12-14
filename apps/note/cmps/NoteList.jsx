@@ -7,30 +7,30 @@ import { NoteImgPreview } from './NoteImgPreview.jsx'
 import { NoteVideoPreview } from './NoteVideoPreview.jsx'
 import { NoteTodosPreview } from './NoteTodosPreview.jsx'
 import { NoteButtons } from './NoteButtons.jsx'
+import { NoteEdit } from './NoteEdit.jsx'
+import { noteService } from '../services/note.service.js'
 
+export function NoteList({ setIsAddedNote, notes, togglePin, onEmail, onEdit, onDelete }) {
 
-export function NoteList({ notes, onPin, onChgColor, onEmail, onEdit, onDelete }) {
-
-    const [cmpType, setCmpType] = useState('Note-Txt')
-
-
-    // console.log("notes:", notes[0].style.backgroundColor)
     return (
         <ul className="note-list">
+            <li>  <NoteEdit setIsAddedNote={setIsAddedNote} note={noteService.getNewNote()} /></li>
             {
                 notes.map(note =>
                     <li key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
-                        <DynmicNoteCmp cmpType={note.type} info={note.info} />
-                        <NoteButtons onPin={onPin} onChngColor={onChgColor} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} note={note}></NoteButtons>
+                        <DynmicNoteCmp isEdit={note.isEdit} cmpType={note.type} info={note.info} note={note} />
+                        {(!note.isEdit) && <NoteButtons togglePin={togglePin}  onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} note={note}></NoteButtons>}
                     </li>
                 )
             }
-        </ul>
+        </ul >
     )
 }
 
 function DynmicNoteCmp(props) {
     // console.log("props:", props)
+    if (props.isEdit) return <NoteEdit {...props}></NoteEdit>
+
     switch (props.cmpType) {
         case 'note-txt':
             return <NoteTxtPreview {...props.info} />
