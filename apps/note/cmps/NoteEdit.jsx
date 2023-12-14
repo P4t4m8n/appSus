@@ -12,12 +12,12 @@ export function NoteEdit({ setIsAddedNote, note }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
     const [cmpType, setCmpType] = useState(note.type)
 
-    function onChgColor(noteId, color) {
-        useEffect(() => {
-            noteService.get(noteId)
-                .then(note => setNoteToEdit(note))
-                .then(prevNoteToEdit => ({ ...prevNoteToEdit, style: { bgc: color } }))
-        })
+    function onChgColor(color) {
+        // useEffect(() => {
+        //     noteService.get(noteId)
+        //         .then(note => setNoteToEdit(note))
+        //         .then(prevNoteToEdit => ({ ...prevNoteToEdit, style: { bgc: color } }))
+        // })
     }
 
     function onEmail(noteId) {

@@ -1,7 +1,6 @@
 
 const { Fragment } = React
 export function NoteImgPreview({ note }) {
-    console.log("note:", note)
 
     return (
         <Fragment>

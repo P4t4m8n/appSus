@@ -32,7 +32,7 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
                 <option value='note-video'>Video Note</option>
                 <option value='note-todos'>ToDo Note</option>
             </select>
-            <button>Filter</button>
+            {/* <button>Filter</button> */}
         </form>
     )
 }

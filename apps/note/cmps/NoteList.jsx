@@ -12,16 +12,17 @@ import { noteService } from '../services/note.service.js'
 
 export function NoteList({ setIsAddedNote, notes, togglePin, onEmail, onEdit, onDelete }) {
 
-    const [onHover, setOnhover] = useState(-1)
+    const [isVisibale, setIsVisibale] = useState(-1)
+    
 
     return (
         <ul className="note-list">
             {
                 notes.map(note =>
-                    <li onMouseEnter={() => setOnhover(note.id)} onMouseLeave={() => setOnhover(-1)} key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
+                    <li onMouseEnter={() => setIsVisibale(note.id)} onMouseLeave={() => setIsVisibale(-1)} key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
                         <DynmicNoteCmp isEdit={note.isEdit} cmpType={note.type} note={note} togglePin={togglePin} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} />
 
-                        {(onHover === note.id) && <NoteButtons togglePin={togglePin} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} note={note}></NoteButtons>}
+                        <NoteButtons  togglePin={togglePin} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} note={note}></NoteButtons>
                     </li>
                 )
             }
