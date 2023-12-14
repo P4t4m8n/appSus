@@ -18,9 +18,10 @@ export const mailService = {
   getDefaultFilter,
 }
 
-function query(filterBy) {
+function query({ globalSearch, ...filterBy }) {
   return asyncStorage.query(MAILS_KEY).then((mails) => {
     return mails.filter((mail) => {
+      // Check for individual filters
       if (
         filterBy.subject &&
         !new RegExp(filterBy.subject, 'i').test(mail.subject)
@@ -39,6 +40,21 @@ function query(filterBy) {
       ) {
         return false
       }
+      if (filterBy.body && !new RegExp(filterBy.body, 'i').test(mail.body)) {
+        return false
+      }
+
+      // Global search logic
+      if (globalSearch) {
+        const searchRegex = new RegExp(globalSearch, 'i')
+        return (
+          searchRegex.test(mail.subject) ||
+          searchRegex.test(mail.from) ||
+          searchRegex.test(mail.to) ||
+          searchRegex.test(mail.body)
+        )
+      }
+
       return true
     })
   })
@@ -85,6 +101,7 @@ function getDefaultFilter() {
     subject: '',
     from: '',
     to: '',
+    body: '',
     isRead: '', // Represents 'All'
   }
 }

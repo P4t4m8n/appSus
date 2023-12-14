@@ -35,6 +35,14 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
         />
 
         <input
+          value={localFilter.body}
+          onChange={handleChange}
+          type="text"
+          placeholder="Body"
+          name="body"
+        />
+
+        <input
           value={localFilter.from}
           onChange={handleChange}
           type="text"
