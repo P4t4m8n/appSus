@@ -20,21 +20,27 @@ export const mailService = {
 
 function query(filterBy) {
   return asyncStorage.query(MAILS_KEY).then((mails) => {
-    let filteredMails = mails
-
-    if (filterBy.subject) {
-      filteredMails = filteredMails.filter((mail) =>
-        new RegExp(filterBy.subject, 'i').test(mail.subject)
-      )
-    }
-
-    if (filterBy.isRead !== null) {
-      filteredMails = filteredMails.filter(
-        (mail) => mail.isRead === (filterBy.isRead === 'true')
-      )
-    }
-
-    return filteredMails
+    return mails.filter((mail) => {
+      if (
+        filterBy.subject &&
+        !new RegExp(filterBy.subject, 'i').test(mail.subject)
+      ) {
+        return false
+      }
+      if (filterBy.from && !new RegExp(filterBy.from, 'i').test(mail.from)) {
+        return false
+      }
+      if (filterBy.to && !new RegExp(filterBy.to, 'i').test(mail.to)) {
+        return false
+      }
+      if (
+        filterBy.isRead !== '' &&
+        mail.isRead.toString() !== filterBy.isRead
+      ) {
+        return false
+      }
+      return true
+    })
   })
 }
 
@@ -79,18 +85,9 @@ function getDefaultFilter() {
     subject: '',
     from: '',
     to: '',
-    isRead: null, // 'null' means no filter is applied for 'isRead' (both 'Read' and 'Unread')
+    isRead: '', // Represents 'All'
   }
 }
-
-// let gFilterBy = getFilterBy()
-
-// function setFilterBy(filterBy = {}) {
-//   if (filterBy.subject !== undefined) filterBy.subject = filterBy.subject
-//   if (filterBy.isRead !== undefined) filterBy.isRead = filterBy.isRead
-//   if (filterBy.from !== undefined) filterBy.from = filterBy.from
-//   return filterBy
-// }
 
 function _createMails() {
   let mails = storageService.loadFromStorage(MAILS_KEY)
