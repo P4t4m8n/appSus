@@ -1,7 +1,11 @@
+const { Fragment } = React
 
-export function NoteVideoPreview({ url,  txt }) {
-    return <section className="note-video-con">
-        <header>{txt}</header>
-        <iframe src={url}></iframe>
-    </section>
+
+export function NoteVideoPreview({ note }) {
+    return (
+        <Fragment>
+            <p>{note.info.txt}</p>
+            <iframe src={note.info.url}></iframe>
+        </Fragment>
+    )
 }

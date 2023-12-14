@@ -1,11 +1,39 @@
 .note-list {
     list-style: none;
-    columns: 4;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .notes-index {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.note-add-txt input,
+.note-add-txt button,
+.add-note-btns button,
+.filter select,
+.filter button {
+    height: 50px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: aliceblue;
+}
+
+.note-new {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .note-list>* {
@@ -13,26 +41,46 @@
     flex-direction: column;
     overflow: hidden;
     min-height: 10rem;
+    max-height: fit-content;
     position: relative;
-    justify-content: space-between;
     border: 0.25rem solid black;
     gap: 3rem;
     margin: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+li header {
+    background: none;
+    border: none;
+}
+
+.note-txt-con {
+    text-align: center;
+
 }
 
 .note-btns {
-    bottom: 0%;
-    right: 0%;
-    align-self: flex-end;
-    /* position: absolute; */
-    background-color: none;
-
+    display: flex;
+    font-size: small;
+    gap: 0.25rem;
+    align-items: end;
 }
 
-.note-btns>* {
-    height: 2rem;
+.note-btns>*{
+    transition: scale 1s;
+    position: static;
+
+}
+.note-btns>*::before{
+    z-index: 1;
 }
 
-.note-btns img {
-    width: fit-content;
+.note-btns>*:hover {
+    scale: 1.25;
+    background-color: aqua;
+}
+
+img {
+    border-radius: 2rem;
 }

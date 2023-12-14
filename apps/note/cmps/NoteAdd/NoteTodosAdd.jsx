@@ -1,6 +1,6 @@
 
 
-export function NoteTodosAdd({ handleChangeTodos, onSubmitNote, note }) {
+export function NoteTodosAdd({ removeTodo, handleChangeTodos, onSubmitNote, note }) {
 
     return (
         <ul className="note-add-todo">
@@ -22,7 +22,7 @@ export function NoteTodosAdd({ handleChangeTodos, onSubmitNote, note }) {
             {
                 note.info.todos.map((todo, idx) =>
                     <li key={idx}>
-                        {console.log()}
+                        {/* {console.log(idx)} */}
                         <form className="note-add-txt"  >
                             <label htmlFor='txt'></label>
                             <input
@@ -34,6 +34,7 @@ export function NoteTodosAdd({ handleChangeTodos, onSubmitNote, note }) {
                                 name={idx}
                                 required>
                             </input>
+                        <button value={idx} onClick={removeTodo}>X</button>
                         </form>
                     </li>
                 )
