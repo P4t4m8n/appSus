@@ -6,9 +6,10 @@ import { NoteTxtPreview } from './NoteTxtPreview.jsx'
 import { NoteImgPreview } from './NoteImgPreview.jsx'
 import { NoteVideoPreview } from './NoteVideoPreview.jsx'
 import { NoteTodosPreview } from './NoteTodosPreview.jsx'
+import { NoteButtons } from './NoteButtons.jsx'
 
 
-export function NoteList({ notes }) {
+export function NoteList({ notes, onPin, onChgColor, onEmail, onEdit, onDelete }) {
 
     const [cmpType, setCmpType] = useState('Note-Txt')
 
@@ -20,13 +21,7 @@ export function NoteList({ notes }) {
                 notes.map(note =>
                     <li key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
                         <DynmicNoteCmp cmpType={note.type} info={note.info} />
-                        <section className="note-btns">
-                            <button>{<img src='assets\img\icons8-pin-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-paint-palette-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-email-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-pen-squared-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-trash-48.png'></img>}</button>
-                        </section>
+                        <NoteButtons onPin={onPin} onChngColor={onChgColor} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} note={note}></NoteButtons>
                     </li>
                 )
             }

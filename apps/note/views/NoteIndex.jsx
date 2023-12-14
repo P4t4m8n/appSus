@@ -9,6 +9,7 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [isAddedNote, setIsAddedNote] = useState(false)
+    const [noteToEdit, setNoteToEdit] = useState(null)
 
     useEffect(() => {
         noteService.query()
@@ -17,15 +18,33 @@ export function NoteIndex() {
 
     if (!notes) return <div>Loading...</div>
 
-    // function addNote(note) {
-    //     console.log("note:", note)
+    function onPin(noteId) {
+        useEffect(() => {
+            noteService.get(noteId)
+                .then(note => setNoteToEdit(note))
+                .then(prevNoteToEdit => ({ ...prevNoteToEdit, isPinned: true }))
+        })
+    }
 
-    // }
+
+    function onChgColor(noteId, color) {
+        useEffect(() => {
+            noteService.get(noteId)
+                .then(note => setNoteToEdit(note))
+                .then(prevNoteToEdit => ({ ...prevNoteToEdit, style: { bgc: color } }))
+        })
+    }
+
+    function onEmail(noteId) {
+        //link to emil with params
+     }
+    function onEdit(noteId) { }
+    function onDelete(noteId) { }
 
     return (
         <section className="notes-index">
             <NoteHeader setIsAddedNote={setIsAddedNote}  ></NoteHeader>
-            <NoteList notes={notes}></NoteList>
+            <NoteList notes={notes} onPin={onPin} onChngColor={onChgColor} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete}></NoteList>
         </section>
     )
 }

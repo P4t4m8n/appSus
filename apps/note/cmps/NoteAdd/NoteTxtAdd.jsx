@@ -1,12 +1,13 @@
+const { useState } = React
 
-
-export function NoteTxtAdd({ handleChange, onSubmitNote, info }) {
+export function NoteTxtAdd({ onSubmitNote, handleChange, note }) {
+   
 
     return (
-        <form  className="note-add-txt" onSubmit={onSubmitNote} >
+        <form className="note-add-txt" onSubmit={onSubmitNote} >
             <label htmlFor='txt'></label>
             <input
-                value={info.txt}
+                value={note.info.txt}
                 onChange={handleChange}
                 type='text'
                 placeholder='Take a Note'

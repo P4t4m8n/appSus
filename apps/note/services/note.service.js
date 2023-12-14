@@ -13,6 +13,7 @@ export const noteService = {
     getDefaultFilter,
     getNewNote,
 
+
 }
 
 function query() {
@@ -28,6 +29,8 @@ function query() {
             return notes
         })
 }
+
+
 
 function get(noteId) {
     return asyncStorage.get(NOTES_KEY, noteId)
@@ -46,8 +49,8 @@ function save(note) {
     }
 }
 
-function getNewNote(type = 'note-txt', isPinned = false, style = { bgc: '#00d' }, info = { txt: 'Im a new text note' }) {
-    return { id: '', createdAt: new Date(), type,isPinned, style, info }
+function getNewNote(type = 'note-txt', isPinned = false, isEdit = false, style = { bgc: '#00d' }, info = { txt: 'Im a new text note', todos: [{ txt: 'Im a new Todo' }], url: '' }) {
+    return { id: '', createdAt: new Date(), isEdit, type, isPinned, style, info }
 }
 
 function getDefaultFilter() {
@@ -111,7 +114,7 @@ function _createnotes() {
                     backgroundColor: '#0000dd'
                 }
             },
-            
+
             {
                 id: 'n105',
                 type: 'note-txt',
@@ -163,7 +166,7 @@ function _createnotes() {
                     backgroundColor: '#9932CC'
                 }
             },
-             
+
             {
                 id: 'n109',
                 type: 'note-txt',
@@ -180,7 +183,7 @@ function _createnotes() {
                 type: 'note-img',
                 isPinned: false,
                 info: {
-                    url: '../../../assets/fiat.jpg',
+                    url: '../../../assets/img/fiat.jpg',
                     txt: 'Gorgeous Sunset'
                 },
                 style: {
@@ -269,7 +272,7 @@ function _createnotes() {
             },
 
         ];
-        
+
     }
     storageService.saveToStorage(NOTES_KEY, notes)
 }
