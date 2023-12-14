@@ -19,7 +19,10 @@ export function MailIndex() {
   }, [filterBy, globalSearch])
 
   function loadMails() {
-    mailService.query({ ...filterBy, globalSearch }).then(setMails)
+    mailService.query({ ...filterBy, globalSearch }).then((retrievedMails) => {
+      const sortedMails = retrievedMails.sort((a, b) => b.sentAt - a.sentAt)
+      setMails(sortedMails)
+    })
   }
 
   function onSetFilterBy(newFilter) {
