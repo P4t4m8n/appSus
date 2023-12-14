@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
   background-color: aqua;
-  max-width: 256px;
+  width: 256px;
 }
 
 .mail-sidebar li {
   list-style-type: none;
+  margin-block: 35px;
 }
 
 .mail-sidebar ul {

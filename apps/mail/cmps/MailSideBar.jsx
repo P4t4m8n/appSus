@@ -1,6 +1,8 @@
 const { NavLink } = ReactRouterDOM
 
-export function MailSideBar() {
+export function MailSideBar({ filterBy, setFilterBy }) {
+  function handleSentClick() {}
+
   return (
     <aside className="mail-sidebar">
       <button
@@ -14,7 +16,12 @@ export function MailSideBar() {
           <NavLink to="/mail">Inbox</NavLink>
         </li>
         <li>
-          <NavLink to="/mail">Sent</NavLink>{' '}
+          {/* <NavLink to="/mail">Sent</
+          NavLink>{' '} */}
+          <button className="btn btn-sent" onClick={handleSentClick}>
+            Sent
+          </button>
+
           {
             //TODO: Implement inbox vs sent folder
           }

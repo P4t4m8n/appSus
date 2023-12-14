@@ -14,7 +14,7 @@ export const mailService = {
   save,
   getEmptyMail,
   getFilterBy,
-  //   setFilterBy,
+  setFilterBy,
   getDefaultFilter,
 }
 
@@ -80,11 +80,12 @@ function getDefaultFilter() {
 
 // let gFilterBy = getFilterBy()
 
-// function setFilterBy(filterBy = {}) {
-//   if (filterBy.subject !== undefined) gFilterBy.subject = filterBy.subject
-//   if (filterBy.isRead !== undefined) gFilterBy.isRead = filterBy.isRead
-//   return gFilterBy
-// }
+function setFilterBy(filterBy = {}) {
+  if (filterBy.subject !== undefined) filterBy.subject = filterBy.subject
+  if (filterBy.isRead !== undefined) filterBy.isRead = filterBy.isRead
+  if (filterBy.from !== undefined) filterBy.from = filterBy.from
+  return filterBy
+}
 
 function _createMails() {
   let mails = storageService.loadFromStorage(MAILS_KEY)

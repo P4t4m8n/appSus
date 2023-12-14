@@ -22,7 +22,7 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
-      <MailSideBar />
+      <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
       <MailList mails={mails} />
     </section>
   )
