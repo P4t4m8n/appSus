@@ -6,36 +6,31 @@ import { NoteTxtPreview } from './NoteTxtPreview.jsx'
 import { NoteImgPreview } from './NoteImgPreview.jsx'
 import { NoteVideoPreview } from './NoteVideoPreview.jsx'
 import { NoteTodosPreview } from './NoteTodosPreview.jsx'
+import { NoteButtons } from './NoteButtons.jsx'
+import { NoteEdit } from './NoteEdit.jsx'
+import { noteService } from '../services/note.service.js'
 
+export function NoteList({ setIsAddedNote, notes, togglePin, onEmail, onEdit, onDelete }) {
 
-export function NoteList({ notes }) {
-
-    const [cmpType, setCmpType] = useState('Note-Txt')
-
-
-    // console.log("notes:", notes[0].style.backgroundColor)
     return (
         <ul className="note-list">
+            <li>  <NoteEdit setIsAddedNote={setIsAddedNote} note={noteService.getNewNote()} /></li>
             {
                 notes.map(note =>
                     <li key={note.id} style={{ backgroundColor: note.style.backgroundColor }}>
-                        <DynmicNoteCmp cmpType={note.type} info={note.info} />
-                        <section className="note-btns">
-                            <button>{<img src='assets\img\icons8-pin-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-paint-palette-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-email-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-pen-squared-48.png'></img>}</button>
-                            <button>{<img src='assets\img\icons8-trash-48.png'></img>}</button>
-                        </section>
+                        <DynmicNoteCmp isEdit={note.isEdit} cmpType={note.type} info={note.info} note={note} />
+                        {(!note.isEdit) && <NoteButtons togglePin={togglePin}  onEmail={onEmail} onEdit={onEdit} onDelete={onDelete} note={note}></NoteButtons>}
                     </li>
                 )
             }
-        </ul>
+        </ul >
     )
 }
 
 function DynmicNoteCmp(props) {
     // console.log("props:", props)
+    if (props.isEdit) return <NoteEdit {...props}></NoteEdit>
+
     switch (props.cmpType) {
         case 'note-txt':
             return <NoteTxtPreview {...props.info} />
