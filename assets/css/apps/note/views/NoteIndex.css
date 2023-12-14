@@ -1,6 +1,5 @@
 .note-list {
     list-style: none;
-    padding-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -47,8 +46,16 @@
     gap: 3rem;
     margin: 1rem;
     padding: 1rem;
+    justify-content: space-between;
     border-radius: 2rem;
+
 }
+
+.note-list :hover>.note-btns {
+    opacity: 1 !important;
+    transition: 1s;
+}
+
 
 li header {
     background: none;
@@ -65,22 +72,32 @@ li header {
     font-size: small;
     gap: 0.25rem;
     align-items: end;
-}
+align-self: self-end;}
 
-.note-btns>*{
-    transition: scale 1s;
+.note-btns>* {
+    transition: 1s;
+    border: none;
+    text-align: center;
     position: static;
+    background: none;
 
 }
-.note-btns>*::before{
+
+.note-btns>*::before {
     z-index: 1;
 }
 
 .note-btns>*:hover {
     scale: 1.25;
-    background-color: aqua;
+
 }
 
-img {
+.note-list img {
+    border-radius: 2rem !important;
+    object-fit: contain;
+}
+iframe{
+    object-fit: contain;
     border-radius: 2rem;
+    width: 100%;
 }

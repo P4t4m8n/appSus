@@ -16,7 +16,7 @@ export function NoteIndex() {
     useEffect(() => {
         noteService.query(filterBy)
             .then((notes) => setNotes(notes))
-    }, [isAddedNote,])
+    }, [isAddedNote,filterBy])
 
     if (!notes) return <div>Loading...</div>
 
