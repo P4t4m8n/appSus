@@ -1,3 +1,5 @@
+import { MailToolBar } from './MailToolbar.jsx'
+
 export function MailPreview({ mail, navigateToMailDetails }) {
   const sentAtTimestamp = mail.sentAt
 
@@ -38,6 +40,7 @@ export function MailPreview({ mail, navigateToMailDetails }) {
       <td className="mail-from">{mail.from}</td>
       <td className="mail-subject">{mail.subject}</td>
       <td className="mail-sent-at">{formattedSentAt}</td>
+      <MailToolBar mailId={mail.id} />
     </tr>
   )
 }

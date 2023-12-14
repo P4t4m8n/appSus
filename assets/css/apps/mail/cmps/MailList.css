@@ -14,9 +14,11 @@
 
 .mail-list table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 .mail-list .mail-row {
+  position: relative;
   font-size: 16px;
   font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   padding: 10px;
@@ -27,7 +29,7 @@
 
 .mail-list .mail-row td {
   padding: 10px 0;
-  border: none;
+  /* border: none; */
 }
 
 .mail-list .mail-row:hover {
