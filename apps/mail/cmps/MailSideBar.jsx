@@ -1,13 +1,20 @@
-const { NavLink, useNavigate } = ReactRouterDOM
+import { MailCompose } from './MailCompose.jsx'
 
-export function MailSideBar({ filterBy, setFilterBy }) {
+const { NavLink, useNavigate } = ReactRouterDOM
+const { useState, useEffect } = React
+
+export function MailSideBar({ filterBy, setFilterBy, onShowCompose }) {
+  // const navigate = useNavigate()
+
   function handleSentClick() {}
-  const navigate = useNavigate()
+
   return (
     <aside className="mail-sidebar">
       <button
         className="btn btn-mail-compose"
-        onClick={() => navigate(`/mail/compose`)}
+        // onClick={() => navigate(`/mail/compose`)}
+
+        onClick={onShowCompose}
       >
         Compose
       </button>
