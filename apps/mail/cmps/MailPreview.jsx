@@ -1,4 +1,4 @@
-import { MailToolBar } from './MailToolbar.jsx'
+import { MailToolBar } from './MailToolBar.jsx'
 
 export function MailPreview({ mail, navigateToMailDetails }) {
   const sentAtTimestamp = mail.sentAt
