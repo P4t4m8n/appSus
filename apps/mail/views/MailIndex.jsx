@@ -2,6 +2,7 @@ import { MailList } from '../cmps/MailList.jsx'
 import { MailSideBar } from '../cmps/MailSideBar.jsx'
 import { MailFilter } from '../cmps/MailFilter.jsx'
 import { mailService } from '../services/mail.service.js'
+import { MailHeader } from '../cmps/MailHeader.jsx'
 
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
@@ -33,25 +34,14 @@ export function MailIndex() {
 
   return (
     <section className="mail-index">
-      <input
-        className="input-global-search"
-        type="text"
-        placeholder="Global Search..."
-        value={globalSearch}
-        onChange={(e) => setGlobalSearch(e.target.value)}
+      <MailHeader
+        filterBy={filterBy}
+        onSetFilterBy={setFilterBy}
+        globalSearch={globalSearch}
+        onSetGlobalSearch={setGlobalSearch}
+        showFilter={showFilter}
+        onSetShowFilter={setShowFilter}
       />
-
-      <button
-        className="btn btn-toggle-filter"
-        onClick={() => setShowFilter(!showFilter)}
-      >
-        Toggle Filter
-      </button>
-
-      {showFilter && (
-        <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-      )}
-
       <div className="container-sidebar-mails">
         <MailSideBar filterBy={filterBy} onSetFilterBy={setFilterBy} />
         <MailList mails={mails} />

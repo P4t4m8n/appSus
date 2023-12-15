@@ -1,0 +1,55 @@
+.mail-header {
+  display: flex;
+  position: relative;
+  background-color: var(--mail-SideBar-bgColor);
+  border: none;
+  height: 64px;
+}
+
+.input-global-search {
+  position: relative;
+  /* padding: 30px; */
+  padding: 0 30px;
+  box-sizing: border-box;
+  min-height: 48px;
+  width: 720px;
+  /* line-height: 27px; */
+  border-radius: 24px;
+  background-color: #eaf1fb;
+  border: none;
+  outline: none;
+}
+
+.input-global-search:focus {
+  background-color: white;
+}
+
+.svg-search {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-inline-start: 5px;
+}
+
+.global-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.btn-toggle-filter {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
