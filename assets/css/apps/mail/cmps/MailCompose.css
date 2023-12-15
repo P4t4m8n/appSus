@@ -1,19 +1,108 @@
 .mail-compose {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  background-color: white;
+  width: 50%;
+  max-width: 650px;
+  height: 50%;
+
+  z-index: 100;
+
+  -webkit-border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
+  -webkit-box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+
+  font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 }
+
 .form-mail-compose {
   display: flex;
   flex-direction: column;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 20px;
+
+  color: #222;
 }
 
-.mail-compose .input-to,
-.input-subject {
-  width: 25%;
+.input-to,
+.input-subject,
+.textarea-body {
+  width: 100%;
+  padding-block: 10px;
+  padding-inline: 10px;
+  height: 20px;
+
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  border: none;
+  outline: none;
 }
 
 .mail-compose textarea {
-  width: 50%;
+  box-shadow: none;
+  height: 150px;
+  max-height: 100%;
+  resize: none;
+  font-family: inherit;
 }
 
-.mail-compose .btn-submit-mail {
+.btn-submit-mail {
+  /* background-color: #467fdb; */
+  font-size: 16px;
+  margin-inline-start: 10px;
+  padding-inline: 16px;
+  background-color: #0b57d0;
+  color: #fff;
+  height: 36px;
+  width: 105px !important;
+  border-radius: 18px;
+  border: none;
+  outline: none;
+}
+
+.btn-submit-mail:hover {
+  box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.451),
+    0 1px 3px 1px rgba(26, 115, 232, 0.302);
+  background-color: #297be6;
+  outline: 1px solid transparent;
+  border: none;
+}
+
+/* .mail-compose .btn-submit-mail {
   width: max-content;
+} */
+
+.mail-compose button {
+  font-family: inherit;
+}
+
+.mail-compose-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--mail-SideBar-bgColor);
+  height: 20px;
+  padding-inline-start: 10px;
+  padding-block: 10px;
+}
+
+.btn-close-compose {
+  position: absolute;
+  right: 10px;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.btn-close-compose:hover {
+  background-color: rgba(68, 71, 70, 0.08);
+}
+
+.mail-compose-header {
+  user-select: none;
 }
