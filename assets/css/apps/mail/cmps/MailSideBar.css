@@ -16,6 +16,7 @@
 }
 
 .btn-mail-compose {
+  position: relative;
   width: 118px;
   height: 56px;
   background-color: var(--mail-SideBar-Btn-Compose-BgColor);
@@ -36,4 +37,20 @@
 .btn-mail-compose:hover {
   box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302),
     0 4px 8px 3px rgba(60, 64, 67, 0.149);
+}
+
+.btn-mail-compose::before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 5px;
+
+  background: url('../../../../img/mail/SideBar/icons8-pencil-20.png') no-repeat
+    center center;
+  background-size: contain;
+
+  transform: translateY(-50%);
 }
