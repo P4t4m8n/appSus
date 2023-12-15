@@ -65,6 +65,14 @@
   outline: none;
 }
 
+.btn-submit-mail:hover {
+  box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.451),
+    0 1px 3px 1px rgba(26, 115, 232, 0.302);
+  background-color: #297be6;
+  outline: 1px solid transparent;
+  border: none;
+}
+
 /* .mail-compose .btn-submit-mail {
   width: max-content;
 } */
@@ -74,6 +82,8 @@
 }
 
 .mail-compose-header {
+  display: flex;
+  align-items: center;
   position: relative;
   background-color: var(--mail-SideBar-bgColor);
   height: 20px;
@@ -86,8 +96,13 @@
   right: 10px;
   border: none;
   outline: none;
+  padding: 5px;
 }
 
 .btn-close-compose:hover {
   background-color: rgba(68, 71, 70, 0.08);
+}
+
+.mail-compose-header {
+  user-select: none;
 }
