@@ -29,8 +29,16 @@ export function MailCompose({ onShowCompose }) {
 
   function onSubmitMail(ev) {
     ev.preventDefault()
+
+    // Set the current timestamp to mailToSend.sentAt
+    const updatedMailToSend = {
+      ...mailToSend,
+      sentAt: Date.now(), // This sets the current timestamp
+      from: 'user@appsus.com',
+    }
+
     mailService
-      .save(mailToSend)
+      .save(updatedMailToSend)
       .then(() => {
         // showSuccessMsg(`Mail sent successfully`)
         navigate('/mail')
@@ -39,11 +47,6 @@ export function MailCompose({ onShowCompose }) {
         console.log('err:', err)
         // showErrorMsg("Couldn't send mail")
       })
-  }
-
-  function onBack() {
-    // navigate('/mail')
-    console.log('helo')
   }
 
   return (
