@@ -119,7 +119,7 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
                         <label className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
                         <input onInput={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
                     </button>
-                    <button onClick={() => setIsEdit(false)}>{<img onClick={() => setIsEdit(false)} src='assets\img\edit50.png'></img>}</button>
+                    <button onClick={() => setIsEdit(false)}>{<img src='assets\img\edit50.png'></img>}</button>
                 </section>
             }
         </Fragment>
