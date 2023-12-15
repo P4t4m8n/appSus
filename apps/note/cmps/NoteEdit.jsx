@@ -1,6 +1,6 @@
 import { noteService } from "../services/note.service.js"
 import { NoteTxtAdd } from "./NoteAdd/NoteTxtAdd.jsx"
-import { NoteImgAdd } from "./NoteAdd/NoteImgAdd.jsx"
+import { NoteimgAdd } from "./NoteAdd/NoteimgAdd.jsx"
 import { NoteVideoAdd } from "./NoteAdd/NoteVideoAdd.jsx"
 import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
@@ -138,7 +138,7 @@ function DynmicNoteAddCmp(props) {
         case 'note-txt':
             return <NoteTxtAdd {...props} />
         case 'note-img':
-            return <NoteImgAdd {...props} />
+            return <NoteimgAdd {...props} />
         case 'note-video':
             return <NoteVideoAdd {...props} />
         case 'note-todos':
