@@ -6,12 +6,16 @@ BODY
 
 .mail-app-container {
   /* height: fit-content; */
-  background-color: red;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .mail-index {
-  position: relative;
+  position: absolute;
   height: 100vh;
+  overflow: hidden;
+
   display: flex;
   /* flex-direction: column; */
   flex-direction: row;
