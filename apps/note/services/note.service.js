@@ -16,6 +16,8 @@ export const noteService = {
 
 }
 
+console.log(_createnotes())
+
 function query(filterBy) {
     return asyncStorage.query(NOTES_KEY)
         .then(notes => {
@@ -254,4 +256,5 @@ function _createnotes() {
 
     }
     storageService.saveToStorage(NOTES_KEY, notes)
+    return notes
 }
