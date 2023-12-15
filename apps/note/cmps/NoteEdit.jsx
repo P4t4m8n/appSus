@@ -37,8 +37,14 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
             field = 'url'
             value = target.value
         }
+        else if (field === '') {
+            field = 'url'
+            value = 'assets/img/noimage100.png'
+        }
 
         else value = target.value
+        console.log("field:", field)
+        console.log("value:", value)
         let info = { ...noteToEdit.info, [field]: value }
         setNoteToEdit(prevNote => ({ ...prevNote, info, type: cmpType }))
     }
@@ -92,7 +98,7 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
 
 
         var value = noteToEdit.info.todos.toSpliced(idx, 1)
-        if (value.length ===0)value.push({txt: 'Im a new Todo'})
+        if (value.length === 0) value.push({ txt: 'Im a new Todo' })
         var info = { ...noteToEdit.info, todos: value }
         setNoteToEdit(prevNote => ({ ...prevNote, info }))
     }
