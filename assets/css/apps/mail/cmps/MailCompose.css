@@ -74,8 +74,20 @@
 }
 
 .mail-compose-header {
+  position: relative;
   background-color: var(--mail-SideBar-bgColor);
   height: 20px;
   padding-inline-start: 10px;
   padding-block: 10px;
+}
+
+.btn-close-compose {
+  position: absolute;
+  right: 10px;
+  border: none;
+  outline: none;
+}
+
+.btn-close-compose:hover {
+  background-color: rgba(68, 71, 70, 0.08);
 }

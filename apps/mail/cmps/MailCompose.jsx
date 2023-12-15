@@ -49,7 +49,7 @@ export function MailCompose() {
     <section className="mail-compose">
       <div className="mail-compose-header">
         <span>New Message</span>
-        <button className="" onClick={onBack}>
+        <button className="btn btn-close-compose" onClick={onBack}>
           X
         </button>
       </div>
