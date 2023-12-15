@@ -1,103 +1,10 @@
-.note-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
 .notes-index {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-
-}
-
-.note-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 1rem;
-}
-
-.note-add-txt input,
-.note-add-txt button,
-.add-note-btns button,
-.filter select,
-.filter button {
-    height: 50px;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: aliceblue;
-}
-
-.note-new {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.note-list>* {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    min-height: 10rem;
-    max-height: fit-content;
-    position: relative;
-    border: 0.25rem solid black;
-    gap: 3rem;
-    margin: 1rem;
-    padding: 1rem;
-    justify-content: space-between;
-    border-radius: 2rem;
-
-}
-
-.note-list :hover>.note-btns {
-    opacity: 1 !important;
-    transition: 1s;
+    padding-inline: 3rem;
+    height: 100%;
+    gap:3rem;
 }
 
 
-li header {
-    background: none;
-    border: none;
-}
 
-.note-txt-con {
-    text-align: center;
-
-}
-
-.note-btns {
-    display: flex;
-    font-size: small;
-    gap: 0.25rem;
-    align-items: end;
-align-self: self-end;}
-
-.note-btns>* {
-    transition: 1s;
-    border: none;
-    text-align: center;
-    position: static;
-    background: none;
-
-}
-
-.note-btns>*::before {
-    z-index: 1;
-}
-
-.note-btns>*:hover {
-    scale: 1.25;
-
-}
-
-.note-list img {
-    border-radius: 2rem !important;
-    object-fit: contain;
-}
-iframe{
-    object-fit: contain;
-    border-radius: 2rem;
-    width: 100%;
-}

@@ -1,12 +1,11 @@
-const { useState } = React
+
 
 export function NoteTxtAdd({ onSubmitNote, handleChange, note }) {
    
 
     return (
         <form className="note-add-txt" onSubmit={onSubmitNote} >
-            <label htmlFor='txt'></label>
-            <input
+            <textarea 
                 value={note.info.txt}
                 onChange={handleChange}
                 type='text'
@@ -14,8 +13,8 @@ export function NoteTxtAdd({ onSubmitNote, handleChange, note }) {
                 id='txt'
                 name='txt'
                 required>
-            </input>
-            <button>Save</button>
+            </textarea>
+            <button className="save-btn">{<img src='assets\img\save50.png'></img>}</button>
         </form>
     )
 }

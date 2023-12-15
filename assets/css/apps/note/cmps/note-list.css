@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+.note-list {
+    columns: auto 4;
+    height: fit-content;
+    padding: 2rem;
+
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+
+.note-list>* {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 0.2rem solid;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+
+}
+
+.note-list li:hover .note-btns {
+    opacity: 1;
+}
+
+.note-list li {
+    transition: scale 2s;
+}
+
+.note-list li:hover {
+    scale: 1.1;
+}
+
+
+.note-btns {
+    opacity: 0;
+    transition: opacity 1s;
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+    height: fit-content;
+    /* position: static; */
+}
+
+.note-btns button img {}
+
+
+.note-btns>* {
+    background-color: red;
+    width: fit-content;
+    height: fit-content;
+    transition: scale 1s;
+    /* margin: 0.25rem; */
+    padding: 0;
+    background-color: inherit;
+    border: none;
+
+
+}
+
+.note-btns>*:hover {
+    scale: 1.5;
+}
+
+.note p {
+    overflow-wrap: break-word;
+}
+
+/* Edit mode */
+
+.note {
+    height: 100%;
+}
+
+.note-add-txt+.note+form {
+    background-color: red;
+}
+
+.note button {
+    scale: 0.7;
+    background-color: inherit;
+    border: none;
+}
+
+.note .add-note-btns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+
+}
+
+.note .save-btn {
+    resize: none;
+
+}
+
+.note textarea {
+    background-color: red;
+    resize: vertical;
+    display: block;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem;
+
+    height: fit-content;
+    overflow: visible;
+
+}

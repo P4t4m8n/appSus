@@ -26,7 +26,7 @@ export function NoteVideoAdd({ onSubmitNote, handleChangeUrl, note }) {
                     required>
                 </input>
             </form>
-            <button onClick={onSubmitNote}>Save</button>
+            <button onClick={onSubmitNote}>{<img src='assets\img\save50.png'></img>}</button>
             <iframe src={note.info.url}></iframe>
         </section>
     )
