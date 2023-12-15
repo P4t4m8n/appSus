@@ -4,6 +4,8 @@ import { MailFilter } from '../cmps/MailFilter.jsx'
 import { mailService } from '../services/mail.service.js'
 import { MailHeader } from '../cmps/MailHeader.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
+import { eventBusService } from '../../../services/event-bus.service.js'
+
 const { Fragment } = React
 
 const { useState, useEffect } = React
@@ -30,6 +32,21 @@ export function MailIndex() {
       setIsSendMail(false) // Reset the flag after mails are loaded
     }
   }, [isSendMail])
+
+  useEffect(() => {
+    // Function to call when mail is deleted
+    const onMailDeleted = () => {
+      loadMails()
+    }
+
+    // Listen for 'mail-deleted' event
+    const unsubscribe = eventBusService.on('mail-deleted', onMailDeleted)
+
+    // Cleanup subscription
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
   function loadMails() {
     mailService.query({ ...filterBy, globalSearch }).then((retrievedMails) => {

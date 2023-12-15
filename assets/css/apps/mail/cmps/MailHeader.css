@@ -8,12 +8,13 @@
 
 .input-global-search {
   /* position: relative; */
-  margin-inline-start: 218px;
+  margin-inline-start: var(--mail-ToolBar-inputGlobalSearch-margin);
   /* padding: 30px; */
   padding: 0 30px;
   box-sizing: border-box;
   min-height: 48px;
-  width: 720px;
+  /* max-width: 720px; */
+  width: 100%;
   /* line-height: 27px; */
   border-radius: 24px;
   background-color: #eaf1fb;
@@ -29,15 +30,17 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: max-content;
+  /* width: max-content; */
+  width: 75%;
+  min-width: 400px;
 }
 
-/* .svg-search {
+.svg-search {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   padding-inline-start: 5px;
-} */
+}
 
 .btn-toggle-filter {
   position: absolute;
@@ -61,7 +64,7 @@
   left: 0;
 } */
 
-/* .input-global-search::before {
+/* .input-global-search::after {
   content: '';
   display: block;
   width: 24px;

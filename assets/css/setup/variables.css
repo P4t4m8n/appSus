@@ -6,4 +6,7 @@
   --mail-SideBar-bgColor: #f2f6fc;
   --mail-SideBar-Btn-Compose-BgColor: #c2e7ff;
   --mail-SideBar-Btn-Compose-Color: #001d35;
+  /* --mail-SideBar-width: 256px; */
+  --mail-SideBar-width: 256px;
+  --mail-ToolBar-inputGlobalSearch-margin: 218px;
 }
