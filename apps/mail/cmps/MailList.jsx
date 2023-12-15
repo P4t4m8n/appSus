@@ -4,10 +4,10 @@ const { useNavigate, useParams } = ReactRouterDOM
 export function MailList({ mails }) {
   const navigate = useNavigate()
 
-  function navigateToMailDetails(mailId) {
-    // ;<Link to={`/book/${book.id}`}>Details</Link>
-    navigate(`/mail/${mailId}`)
-  }
+  // function navigateToMailDetails(mailId) {
+  //   // ;<Link to={`/book/${book.id}`}>Details</Link>
+  //   navigate(`/mail/${mailId}`)
+  // }
 
   return (
     <main className="mail-list">
