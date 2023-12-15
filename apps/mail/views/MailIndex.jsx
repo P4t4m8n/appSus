@@ -4,6 +4,7 @@ import { MailFilter } from '../cmps/MailFilter.jsx'
 import { mailService } from '../services/mail.service.js'
 import { MailHeader } from '../cmps/MailHeader.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
+const { Fragment } = React
 
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
@@ -43,7 +44,7 @@ export function MailIndex() {
   if (!mails) return <div>Loading...</div>
 
   return (
-    <section className="mail-index">
+    <Fragment>
       <MailHeader
         filterBy={filterBy}
         onSetFilterBy={setFilterBy}
@@ -52,18 +53,20 @@ export function MailIndex() {
         showFilter={showFilter}
         onSetShowFilter={setShowFilter}
       />
-      <div className="container-sidebar-mails">
-        <MailSideBar
-          filterBy={filterBy}
-          onSetFilterBy={setFilterBy}
-          onShowCompose={onShowCompose}
-        />
-        <MailList mails={mails} />
-      </div>
-      {console.log('isShowComposeAfterDiv')}
-      {console.log('isShowCompose', isShowCompose)}
-      {isShowCompose && <MailCompose />}
-      {console.log('isShowComposeAfterCompose')}
-    </section>
+      <section className="mail-index">
+        <div className="container-sidebar-mails">
+          <MailSideBar
+            filterBy={filterBy}
+            onSetFilterBy={setFilterBy}
+            onShowCompose={onShowCompose}
+          />
+          <MailList mails={mails} />
+        </div>
+        {console.log('isShowComposeAfterDiv')}
+        {console.log('isShowCompose', isShowCompose)}
+        {isShowCompose && <MailCompose />}
+        {console.log('isShowComposeAfterCompose')}
+      </section>
+    </Fragment>
   )
 }

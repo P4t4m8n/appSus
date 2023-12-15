@@ -47,8 +47,13 @@ export function MailCompose() {
 
   return (
     <section className="mail-compose">
+      <div className="mail-compose-header">
+        <span>New Message</span>
+        <button className="" onClick={onBack}>
+          X
+        </button>
+      </div>
       <form className="form-mail-compose" onSubmit={onSubmitMail}>
-        <label htmlFor="to">To: </label>
         <input
           className="input-to"
           type="text"
@@ -56,10 +61,10 @@ export function MailCompose() {
           id="to"
           value={mailToSend.to}
           onChange={handleChange}
+          placeholder="To"
           required
         />
 
-        <label htmlFor="subject">Subject: </label>
         <input
           className="input-subject"
           type="text"
@@ -67,10 +72,10 @@ export function MailCompose() {
           id="subject"
           value={mailToSend.subject}
           onChange={handleChange}
+          placeholder="Subject"
           required
         />
 
-        <label htmlFor="body">Body: </label>
         <textarea
           className="textarea-body"
           name="body"
@@ -81,10 +86,9 @@ export function MailCompose() {
         ></textarea>
 
         <button className="btn btn-submit-mail" type="submit">
-          Send Mail
+          Send
         </button>
       </form>
-      <button onClick={onBack}>Back</button>
     </section>
   )
 }
