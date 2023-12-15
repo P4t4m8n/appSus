@@ -43,7 +43,7 @@ export function MailPreview({ mail, navigateToMailDetails }) {
         <div className="container-mail-btns" onClick={handleContainerClick}>
           <button className="select-btn">
             <img
-              src="../../../appSus/assets/img/mail/ToolBar/checkbox.png"
+              src="../../../assets/img/mail/ToolBar/checkbox.png"
               alt="Select"
               title="Select"
             />

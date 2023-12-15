@@ -44,7 +44,7 @@ export function MailDetails() {
         <button>
           <img
             className="img-star-mail"
-            src="../../../appSus/assets/img/mail/star-mail.png"
+            src="../../../assets/img/mail/star-mail.png"
             alt="Star"
             title="Star"
           />
@@ -52,7 +52,7 @@ export function MailDetails() {
         <button>
           <img
             className="img-delete-mail"
-            src="../../../appSus/assets/img/mail/delete-mail.png"
+            src="../../../assets/img/mail/delete-mail.png"
             alt="Delete mail"
             title="Delete mail"
             onClick={() => onRemoveMail(mail.id)}
