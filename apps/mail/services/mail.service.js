@@ -210,6 +210,27 @@ function _createMails() {
         from: 'feedback@qualityservices.com',
         to: 'user@appsus.com',
       },
+      {
+        id: 'OXeMG8wNs11',
+        subject: 'Exclusive Deals on Winter Getaways!',
+        body: 'Ready for your next adventure? Check out our exclusive winter travel deals and embark on an unforgettable journey!',
+        isRead: false,
+        sentAt: new Date().setHours(3, 0, 0, 0), // This sets the date to today at 3:00 AM
+        removedAt: null,
+        from: 'traveldeals@wanderlust.com',
+        to: 'user@appsus.com',
+      },
+
+      {
+        id: 'OXeMG8wNs12',
+        subject: '5 Quick and Healthy Dinner Recipes',
+        body: 'Need dinner ideas? Here are 5 quick and healthy recipes to make your weeknights easier and tastier.',
+        isRead: false,
+        sentAt: new Date().setHours(7, 0, 0, 0), // This sets the date to today at 3:00 AM
+        removedAt: null,
+        from: 'recipes@culinarydelights.com',
+        to: 'user@appsus.com',
+      },
     ]
   }
   storageService.saveToStorage(MAILS_KEY, mails)

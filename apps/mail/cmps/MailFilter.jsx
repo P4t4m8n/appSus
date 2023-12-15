@@ -67,8 +67,6 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
           <option value="true">Read</option>
           <option value="false">Unread</option>
         </select>
-
-        <button type="submit">Apply Filters</button>
       </form>
     </section>
   )

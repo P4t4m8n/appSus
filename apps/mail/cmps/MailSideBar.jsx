@@ -2,7 +2,7 @@ const { NavLink, useNavigate } = ReactRouterDOM
 
 export function MailSideBar({ filterBy, setFilterBy }) {
   function handleSentClick() {}
-
+  const navigate = useNavigate()
   return (
     <aside className="mail-sidebar">
       <button

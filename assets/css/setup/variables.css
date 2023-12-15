@@ -1,3 +1,9 @@
 :root {
-    --main-bg-color: lightblue;
+  --main-bg-color: lightblue;
+
+  /* Mail vars */
+
+  --mail-SideBar-bgColor: #f2f6fc;
+  --mail-SideBar-Btn-Compose-BgColor: #c2e7ff;
+  --mail-SideBar-Btn-Compose-Color: #001d35;
 }
