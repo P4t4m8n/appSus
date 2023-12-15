@@ -6,9 +6,11 @@ import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
 const { useEffect, useState, Fragment } = React
 
-export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
+export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
     const [cmpType, setCmpType] = useState(note.type)
+
+    const editClass = (isEdit) ? 'edit' : ''
 
     function onChgColor({ target }) {
         var style = { ...style, backgroundColor: target.value }
@@ -52,7 +54,9 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
             value = { txt: target.value }
             value = noteToEdit.info.todos.toSpliced(field, 1, value)
             field = 'todos'
-            if (value[value.length - 1] !== 'Im a new Todo') value.push({ txt: 'Im a new Todo' })
+            console.log("value:", value)
+            console.log("value[value.length - 1]:", value[value.length - 1])
+            if (value[value.length - 1].txt !== 'Im a new Todo') value.push({ txt: 'Im a new Todo' })
         }
 
         info = { ...noteToEdit.info, [field]: value }
@@ -73,7 +77,7 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
                 else {
                     setIsAddedNote(prev => !prev)
                     setNoteToEdit(noteService.getNewNote())
-                   
+
                 }
                 // showSuccessMsg(`Note saved successfully`)
                 // navigate('/book')
@@ -94,21 +98,21 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
 
 
     return (
-        <Fragment>
-            <DynmicNoteAddCmp cmpType={cmpType} onSubmitNote={onSubmitNote} note={noteToEdit}
+        <Fragment >
+            <DynmicNoteAddCmp cmpType={cmpType} className="editClass" onSubmitNote={onSubmitNote} note={noteToEdit}
                 setNoteToEdit={setNoteToEdit} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
             {
 
-                <section className="add-note-btns">
+                <section className="add-note-btns ">
                     <button onClick={() => setCmpType('note-txt')}>{<img src='assets\img\txt.png'></img>}</button>
                     <button onClick={() => setCmpType('note-todos')}>{<img src='assets\img\todo.png'></img>}</button>
                     <button onClick={() => setCmpType('note-img')}>{<img src='assets\img\img.png'></img>}</button>
                     <button onClick={() => setCmpType('note-video')}>{<img src='assets\img\video.png'></img>}</button>
-                    <div className="color-sec">
+                    <button className="color-sec">
                         <label className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
                         <input onInput={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
-                    </div>
-                    <button onClick={() => setIsEdit(false)}>{<img src='assets\img\icons8-pen-squared-48.png'></img>}</button>
+                    </button>
+                    <button onClick={() => setIsEdit(false)}>{<img onClick={() => setIsEdit(false)} src='assets\img\edit50.png'></img>}</button>
                 </section>
             }
         </Fragment>

@@ -5,30 +5,25 @@ import { NoteVideoPreview } from './NoteVideoPreview.jsx'
 import { NoteTodosPreview } from './NoteTodosPreview.jsx'
 import { NoteButtons } from './NoteButtons.jsx'
 import { NoteEdit } from './NoteEdit.jsx'
+import { noteService } from '../services/note.service.js'
 
-const { useState,Fragment } = React
+const { useState, Fragment } = React
 
-export function NoteManager({ note ,onDelete,onEmail}) {
-console.log("note:", note)
+export function NoteManager({ note, onDelete, onEmail,setIsAddedNote }) {
 
     const [currNote, setNote] = useState(note)
     const [isEdit, setIsEdit] = useState(false)
 
-    function togglePin(noteId) {
-        noteService.get(noteId)
-            .then(note => {
-                note.isPinned = !note.isPinned
-                noteService.save(note).then(() => setFilterBy(''))
-
-            })
+    function togglePin() {
+        currNote.isPinned = !currNote.isPinned
+        noteService.save(currNote).then(() => setIsAddedNote((prev)=>!prev))
     }
-
 
     return (
 
         <Fragment>
-            <DynmicNoteCmp setNote={setNote} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit}/>
-            {!isEdit && <NoteButtons  togglePin={togglePin} onEmail={onEmail} setIsEdit={setIsEdit} onDelete={onDelete} note={currNote}></NoteButtons>}
+            <DynmicNoteCmp setNote={setNote} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
+            {!isEdit && <NoteButtons togglePin={togglePin} onEmail={onEmail} setIsEdit={setIsEdit} onDelete={onDelete} note={currNote}></NoteButtons>}
         </Fragment>
     )
 

@@ -25,24 +25,13 @@ export function NoteIndex() {
             .then(note => {
                 note.isPinned = !note.isPinned
                 noteService.save(note).then(() => setFilterBy(''))
-
             })
     }
 
     function onEmail(noteId) { }
 
     function onSetFilterBy(filterBy) {
-        console.log("filterBy:", filterBy)
         setFilterBy(filterBy)
-    }
-
-    function onEdit(noteId) {
-        noteService.get(noteId)
-            .then(note => {
-                console.log("note:", note)
-                note.isEdit = !note.isEdit
-                noteService.save(note).then(setIsAddedNote(IsAddedNote => !IsAddedNote))
-            })
     }
 
     function onDelete(noteId) {
@@ -59,7 +48,7 @@ export function NoteIndex() {
                 </div>
                 <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy}></NoteFilter>
             </section>
-            <NoteList setIsAddedNote={setIsAddedNote} notes={notes} togglePin={togglePin} onEmail={onEmail} onEdit={onEdit} onDelete={onDelete}></NoteList>
+            <NoteList setIsAddedNote={setIsAddedNote} notes={notes} togglePin={togglePin} onEmail={onEmail} onDelete={onDelete}></NoteList>
         </section>
     )
 }

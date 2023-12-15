@@ -1,6 +1,7 @@
 /* Setup */
 
 @import './setup/variables.css';
+@import './setup/typography.css';
 /* @import './setup/fonts.css'; */
 
 /* Basics */
@@ -14,6 +15,10 @@
 
 /* Notes */
 @import './apps/note/views/NoteIndex.css';
+/* Notes comp */
+@import './apps/note/cmps/note-list.css';
+@import './apps/note/cmps/note-todo-list.css';
+@import '../css/apps/note/cmps/note-header.css';
 
 @import './apps/mail/views/MailIndex.css';
 

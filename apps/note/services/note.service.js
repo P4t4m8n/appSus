@@ -17,7 +17,6 @@ export const noteService = {
 }
 
 function query(filterBy) {
-    console.log("filterBy q:", filterBy)
     return asyncStorage.query(NOTES_KEY)
         .then(notes => {
             if (filterBy !== '') notes = notes.filter(note => note.type === filterBy)

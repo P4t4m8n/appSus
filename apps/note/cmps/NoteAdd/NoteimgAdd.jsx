@@ -18,15 +18,13 @@ export function NoteImgAdd({ handleChangeUrl, onSubmitNote, note }) {
                 </input>
             </form>
 
-
-
             <input
                 type="file"
                 name="url"
                 // value={note.info.url}
                 onChange={handleChangeUrl}
             />
-            <button onClick={onSubmitNote}>Save</button>
+            <button onClick={onSubmitNote}>{<img src='assets\img\save50.png'></img>}</button>
         </div>
     );
 
