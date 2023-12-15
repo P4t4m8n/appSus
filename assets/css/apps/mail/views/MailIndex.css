@@ -3,8 +3,10 @@
 Roboto, Arial, sans-serif
 BODY
 "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif */
-body {
-  overflow: hidden;
+
+.mail-app-container {
+  /* height: fit-content; */
+  background-color: red;
 }
 
 .mail-index {
