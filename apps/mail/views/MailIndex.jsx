@@ -64,7 +64,7 @@ export function MailIndex() {
         </div>
         {console.log('isShowComposeAfterDiv')}
         {console.log('isShowCompose', isShowCompose)}
-        {isShowCompose && <MailCompose />}
+        {isShowCompose && <MailCompose onShowCompose={onShowCompose} />}
         {console.log('isShowComposeAfterCompose')}
       </section>
     </Fragment>

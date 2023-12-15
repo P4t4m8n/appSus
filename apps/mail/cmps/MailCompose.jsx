@@ -2,7 +2,7 @@ import { mailService } from '../services/mail.service.js'
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
 
-export function MailCompose() {
+export function MailCompose({ onShowCompose }) {
   const [mailToSend, setMailToSend] = useState(mailService.getEmptyMail())
   const navigate = useNavigate()
 
@@ -42,14 +42,15 @@ export function MailCompose() {
   }
 
   function onBack() {
-    navigate('/mail')
+    // navigate('/mail')
+    console.log('helo')
   }
 
   return (
     <section className="mail-compose">
       <div className="mail-compose-header">
         <span>New Message</span>
-        <button className="btn btn-close-compose" onClick={onBack}>
+        <button className="btn btn-close-compose" onClick={onShowCompose}>
           X
         </button>
       </div>
