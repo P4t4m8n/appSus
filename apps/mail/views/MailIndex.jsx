@@ -15,12 +15,21 @@ export function MailIndex() {
   const [globalSearch, setGlobalSearch] = useState('')
   const [showFilter, setShowFilter] = useState(false)
   const [isShowCompose, setIsShowCompose] = useState(false)
+  const [isSendMail, setIsSendMail] = useState(false)
 
   const navigate = useNavigate()
 
   useEffect(() => {
     loadMails()
   }, [filterBy, globalSearch])
+
+  // Listening for new mail saved(sent)
+  useEffect(() => {
+    if (isSendMail) {
+      loadMails()
+      setIsSendMail(false) // Reset the flag after mails are loaded
+    }
+  }, [isSendMail])
 
   function loadMails() {
     mailService.query({ ...filterBy, globalSearch }).then((retrievedMails) => {
@@ -31,10 +40,10 @@ export function MailIndex() {
 
   function onShowCompose() {
     setIsShowCompose((prevState) => !prevState)
-    console.log(
-      '🚀 ~ file: MailIndex.jsx:37 ~ onShowCompose ~ isShowCompose:',
-      isShowCompose
-    )
+  }
+
+  function onSendMail() {
+    setIsSendMail(true)
   }
 
   function onSetFilterBy(newFilter) {
@@ -62,7 +71,9 @@ export function MailIndex() {
           />
           <MailList mails={mails} />
         </div>
-        {isShowCompose && <MailCompose onShowCompose={onShowCompose} />}
+        {isShowCompose && (
+          <MailCompose onShowCompose={onShowCompose} onSendMail={onSendMail} />
+        )}
       </section>
     </div>
   )
