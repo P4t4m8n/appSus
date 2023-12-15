@@ -1,5 +1,6 @@
 .mail-compose {
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   bottom: 0;
   right: 0;
 
@@ -53,8 +54,13 @@
 
 .btn-submit-mail {
   /* background-color: #467fdb; */
+  position: absolute;
+
+  bottom: 0;
+
   font-size: 16px;
   margin-inline-start: 10px;
+  margin-block-end: 20px;
   padding-inline: 16px;
   background-color: #0b57d0;
   color: #fff;

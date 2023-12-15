@@ -44,7 +44,7 @@ export function MailIndex() {
   if (!mails) return <div>Loading...</div>
 
   return (
-    <Fragment>
+    <div className="mail-app-container">
       <MailHeader
         filterBy={filterBy}
         onSetFilterBy={setFilterBy}
@@ -62,11 +62,8 @@ export function MailIndex() {
           />
           <MailList mails={mails} />
         </div>
-        {console.log('isShowComposeAfterDiv')}
-        {console.log('isShowCompose', isShowCompose)}
         {isShowCompose && <MailCompose onShowCompose={onShowCompose} />}
-        {console.log('isShowComposeAfterCompose')}
       </section>
-    </Fragment>
+    </div>
   )
 }
