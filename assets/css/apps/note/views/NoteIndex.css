@@ -1,7 +1,8 @@
 .note-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr); */
+    columns: 15rem auto
 }
 
 .notes-index {
@@ -22,7 +23,8 @@
 .note-add-txt button,
 .add-note-btns button,
 .filter select,
-.filter button {
+.filter button,
+.color-btn img {
     height: 50px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -33,6 +35,15 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.add-note-btns {
+    display: flex;
+}
+
+.color-btn img {
+    height: 50px;
+    object-fit: contain;
 }
 
 .note-list>* {
@@ -51,6 +62,10 @@
 
 }
 
+.note-btns {
+    opacity: 0;
+}
+
 .note-list :hover>.note-btns {
     opacity: 1 !important;
     transition: 1s;
@@ -67,12 +82,15 @@ li header {
 
 }
 
-.note-btns {
+.note-btns,
+.note-btns label {
     display: flex;
     font-size: small;
     gap: 0.25rem;
     align-items: end;
-align-self: self-end;}
+    align-self: self-end;
+}
+
 
 .note-btns>* {
     transition: 1s;
@@ -96,8 +114,34 @@ align-self: self-end;}
     border-radius: 2rem !important;
     object-fit: contain;
 }
-iframe{
+
+iframe {
     object-fit: contain;
     border-radius: 2rem;
     width: 100%;
+}
+
+li:has(.note-add-todo) {
+    align-items: flex-end;
+    scale: 1.5;
+}
+
+li:has(.note-add-txt){
+    align-items: flex-end;
+    
+}
+
+.note-add-todo {
+    list-style: none;
+
+}
+
+.note-add-txt textarea {
+    background-color: initial;
+   text-wrap:wrap;
+   resize: both;
+   width: 100% !important;
+    
+   
+
 }

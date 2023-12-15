@@ -6,18 +6,13 @@ import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
 const { useEffect, useState, Fragment } = React
 
-export function NoteEdit({ setIsAddedNote, note }) {
-    // console.log("note:", note)
-
+export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
     const [cmpType, setCmpType] = useState(note.type)
 
-    function onChgColor(color) {
-        // useEffect(() => {
-        //     noteService.get(noteId)
-        //         .then(note => setNoteToEdit(note))
-        //         .then(prevNoteToEdit => ({ ...prevNoteToEdit, style: { bgc: color } }))
-        // })
+    function onChgColor({ target }) {
+        var style = { ...style, backgroundColor: target.value }
+        setNoteToEdit(prevNote => ({ ...prevNote, style }))
     }
 
     function onEmail(noteId) {
@@ -71,14 +66,19 @@ export function NoteEdit({ setIsAddedNote, note }) {
         noteService
             .save(noteToEdit)
             .then(() => {
-                setNoteToEdit(noteService.getNewNote())
-                setIsAddedNote(IsAddedNote => (!IsAddedNote))
+                if (noteToEdit.id !== '') {
+                    setIsEdit(false)
+                    setNote(noteToEdit)
+                }
+                else {
+                    setIsAddedNote(prev => !prev)
+                    setNoteToEdit(noteService.getNewNote())
+                   
+                }
                 // showSuccessMsg(`Note saved successfully`)
                 // navigate('/book')
-                console.log('saved')
             })
             .catch(err => {
-                console.log('err:', err)
                 // showErrorMsg("Couldn't save Note")
             })
     }
@@ -104,7 +104,11 @@ export function NoteEdit({ setIsAddedNote, note }) {
                     <button onClick={() => setCmpType('note-todos')}>{<img src='assets\img\todo.png'></img>}</button>
                     <button onClick={() => setCmpType('note-img')}>{<img src='assets\img\img.png'></img>}</button>
                     <button onClick={() => setCmpType('note-video')}>{<img src='assets\img\video.png'></img>}</button>
-                    <button onClick={() => onChgColor()}>{<img src='assets\img\color.png'></img>}</button>
+                    <div className="color-sec">
+                        <label className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
+                        <input onInput={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
+                    </div>
+                    <button onClick={() => setIsEdit(false)}>{<img src='assets\img\icons8-pen-squared-48.png'></img>}</button>
                 </section>
             }
         </Fragment>
@@ -113,7 +117,6 @@ export function NoteEdit({ setIsAddedNote, note }) {
 }
 
 function DynmicNoteAddCmp(props) {
-    // console.log("props:", props)
     switch (props.cmpType) {
         case 'note-txt':
             return <NoteTxtAdd {...props} />
