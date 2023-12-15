@@ -10,15 +10,14 @@
 .note-new .add-note-btns {
     opacity: 0;
     transition: opacity 1s;
+    height: 100%;
 }
 
 
-.note-new.add-note-btns>*,
-.note-new.save-btn {
+button
+ {
     transition: scale 1s;
-    margin: 0.25rem;
-    background-color: aliceblue;
-    border: none;
+  
 }
 
 .note-new.add-note-btns>*:hover {
@@ -30,29 +29,33 @@
     opacity: 1;
 }
 
-.note-new.save-btn img {
+.notes-index img {
     background-color: none;
 }
 
-.note-new.save-btn {
+.notes-index button {
+    border: none;
     background-color: inherit;
 
 
 }
 
-.note-new .note-add-txt textarea {
+.notes-index textarea {
     background-color: inherit;
     border: none;
     overflow: hidden;
-    min-height: 50px;
+    min-height: min-content;
     max-height: 500px;
-
     resize: none;
-    display: inline;
+    display: flex;
+    justify-content: center;
     overflow-wrap: break-word;
     transition: font-size 1s;
     text-align: start;
     font-family: robotoBold;
+    padding-top: 1.25rem;
+    padding: 0;
+    align-items: center;
 
 }
 

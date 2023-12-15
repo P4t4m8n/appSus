@@ -1,64 +1,52 @@
-.note-add-todo {
-    display: grid;
-    align-items: center;
-    list-style-type: none;
-    padding-inline-start: 1em;
+/* header */
+
+
+.note-add-todo .note-add-txt {
+    display: block ;
+    list-style: none;
 
 }
 
-.note-add-todo li form>* {
-    font-family: robotoBold;
-
-    cursor: pointer;
-}
-
-.note-add-todo li {
+.todo-head-edit{
     display: flex;
-    align-items: center;
-    height: 3em;
-    border-block-end: 1px solid lightgrey;
-    transition: .4s;
+    padding-left: 1rem;
 }
 
-.note-add-todo li:first-child {
-    border-block-start: 1px solid lightgrey;
-    margin-left: 2.9rem;
-}
-
-.note-add-todo li input {
-    transition: .4s;
-    margin-inline-start: 1em;
-    accent-color: lightgrey;
-    border: none;
-    overflow: hidden;
-}
-
-.note-add-todo li:hover {
-    scale: 1.1;
-}
-
-.note-add-todo li form label {
-    position: relative;
-    width: max-content;
-    padding-inline-start: 1em;
-    transition: .6s;
-}
-
-.note-add-todo li form label::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-
+.todo-head-edit button{
+    padding-inline: 0 ;
     display: block;
-    width: 0%;
-    border-block-start: 1px solid black;
-
-    transition: .4s;
+    width: 100%;
+    height: 100%;
+   
+   
+    
 }
 
-.note-add-todo li form input:checked+label{
-    opacity: .3;
-    text-decoration: line-through;
+.todo {
+    display: flex;
+    height: 100%;
+    /* align-items: center */
+    /* position: relative; */
 }
 
 
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    width: 1.1rem;
+    height: 1rem;
+    border: 1px solid hsl(0, 0%, 85%);
+    border-radius: 1px;
+    /* vertical-align: sub; */
+    /* position: absolute; */
+    /* top: 50% !important; */
+    /* transform: translateY(-50%); */
+    /* position: relative; */
+    /* margin-top: 50%; */
+
+    outline: none;
+
+}
+
+.todo button{
+
+}

@@ -1,6 +1,6 @@
 
 
-export function NoteTxtAdd({ onSubmitNote, handleChange, note }) {
+export function NoteTxtAdd({ onSubmitNote, handleChange, note,autoResize }) {
    
 
     return (
@@ -8,6 +8,7 @@ export function NoteTxtAdd({ onSubmitNote, handleChange, note }) {
             <textarea 
                 value={note.info.txt}
                 onChange={handleChange}
+                onInput={(el)=>autoResize(el)}
                 type='text'
                 placeholder='Take a Note'
                 id='txt'

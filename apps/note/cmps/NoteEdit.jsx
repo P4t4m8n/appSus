@@ -87,12 +87,19 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
             })
     }
 
-    function removeTodo(ev) {
-        // ev.stopPropagation()
-        // ev.preventDefault()
-        var value = noteToEdit.info.todos.toSpliced(ev.target.value, 1)
+    function removeTodo(ev, idx) {
+        ev.preventDefault()
+
+
+        var value = noteToEdit.info.todos.toSpliced(idx, 1)
+        if (value.length ===0)value.push({txt: 'Im a new Todo'})
         var info = { ...noteToEdit.info, todos: value }
         setNoteToEdit(prevNote => ({ ...prevNote, info }))
+    }
+
+    function autoResize({ target }) {
+        target.style.height = 'auto';
+        target.style.height = target.scrollHeight + 'px'
     }
 
 
@@ -100,7 +107,7 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
     return (
         <Fragment >
             <DynmicNoteAddCmp cmpType={cmpType} className="editClass" onSubmitNote={onSubmitNote} note={noteToEdit}
-                setNoteToEdit={setNoteToEdit} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
+                setNoteToEdit={setNoteToEdit} autoResize={autoResize} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
             {
 
                 <section className="add-note-btns ">
