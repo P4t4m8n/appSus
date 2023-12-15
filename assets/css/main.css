@@ -11,7 +11,7 @@
 /* @import './basics/layout.css'; */
 
 /* Views */
-@import './views/home.css';
+@import './views/Home.css';
 
 /* Notes */
 @import './apps/note/views/NoteIndex.css';
@@ -31,5 +31,5 @@
 @import './apps/mail/cmps/MailPreview.css';
 @import './apps/mail/cmps/MailCompose.css';
 @import './apps/mail/cmps/MailSideBar.css';
-@import './apps/mail/cmps/MailToolbar.css';
+@import './apps/mail/cmps/MailToolBar.css';
 @import './apps/mail/cmps/MailHeader.css';
