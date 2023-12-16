@@ -4,12 +4,13 @@ import { MailFilter } from '../cmps/MailFilter.jsx'
 import { mailService } from '../services/mail.service.js'
 import { MailHeader } from '../cmps/MailHeader.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
+import { MailDetails } from '../views/MailDetails.jsx'
 import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { Fragment } = React
 
 const { useState, useEffect } = React
-const { useNavigate } = ReactRouterDOM
+const { useParams, useNavigate } = ReactRouterDOM
 
 export function MailIndex() {
   const [mails, setMails] = useState(null)
@@ -18,6 +19,7 @@ export function MailIndex() {
   const [showFilter, setShowFilter] = useState(false)
   const [isShowCompose, setIsShowCompose] = useState(false)
   const [isSendMail, setIsSendMail] = useState(false)
+  const { mailId } = useParams()
 
   const navigate = useNavigate()
 
@@ -98,7 +100,7 @@ export function MailIndex() {
             onFilterSentMails={handleFilterSentMails}
             onFilterReceivedMails={handleFilterReceivedMails}
           />
-          <MailList mails={mails} />
+          {mailId ? <MailDetails /> : <MailList mails={mails} />}
         </div>
         {isShowCompose && (
           <MailCompose onShowCompose={onShowCompose} onSendMail={onSendMail} />

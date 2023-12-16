@@ -11,7 +11,8 @@ BODY
   overflow: hidden;
   background-color: var(--mail-SideBar-bgColor);
 }
-*/ .mail-index {
+
+.mail-index {
   position: absolute;
   height: 100vh;
   overflow: hidden;
