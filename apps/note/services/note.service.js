@@ -83,8 +83,8 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    url: '../../../assets/img/audi.jpg',
-                    txt: 'Serene Beach Sunset',
+                    url: 'assets/img/pata1.png',
+                    txt: 'patamon',
                     todos: []
                 },
                 style: {
@@ -136,7 +136,7 @@ function _createnotes() {
                     backgroundColor: '#800080'
                 },
                 info: {
-                    txt: 'Mindfulness meditation techniques',
+                    txt: 'ABCDEFG',
                     url: '',
                     todos: []
                 }
@@ -148,8 +148,8 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    url: '../../../assets/img/fiat.jpg',
-                    txt: 'Majestic Mountain Range',
+                    url: 'assets/img/pata4.jpeg',
+                    txt: 'Happy Pata',
                     todos: []
                 },
                 style: {
@@ -166,8 +166,8 @@ function _createnotes() {
                     txt: 'Work-related tasks',
                     url: '',
                     todos: [
-                        { txt: 'Complete project report', doneAt: null },
-                        { txt: 'Schedule team meeting', doneAt: 187111116 }
+                        { txt: 'Look smert', doneAt: null },
+                        { txt: 'Sound stupid', doneAt: 187111116 }
                     ]
                 },
                 style: {
@@ -199,7 +199,7 @@ function _createnotes() {
                     backgroundColor: '#ff4500'
                 },
                 info: {
-                    txt: 'Travel bucket list',
+                    txt: 'I dreamt I was a butterfly,',
                     url: '',
                     todos: []
                 }
@@ -211,8 +211,8 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    url: '../../../assets/img/honda.jpg',
-                    txt: 'City Skyline at Night',
+                    url: 'assets/img/pata2.jpg',
+                    txt: 'Flying Pata',
                     todos: []
                 },
                 style: {
@@ -229,8 +229,8 @@ function _createnotes() {
                     txt: 'Fitness goals',
                     url: '',
                     todos: [
-                        { txt: 'Run 5 miles', doneAt: 187111118 },
-                        { txt: 'Try a new workout class', doneAt: null }
+                        { txt: 'Run 10 meters', doneAt: 187111118 },
+                        { txt: 'Try not to die', doneAt: null }
                     ]
                 },
                 style: {
