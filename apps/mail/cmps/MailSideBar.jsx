@@ -4,7 +4,7 @@ const { NavLink, useNavigate } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailSideBar({ filterBy, setFilterBy, onShowCompose }) {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   function handleSentClick() {}
 
@@ -19,7 +19,10 @@ export function MailSideBar({ filterBy, setFilterBy, onShowCompose }) {
         Compose
       </button>
       <ul className="container-sidebar-icons">
-        <li className="container-sidebar-inbox">
+        <li
+          className="container-sidebar-inbox"
+          onClick={() => navigate('/mail')}
+        >
           <img
             className="img-sidebar-inbox"
             src="../../../appSus/assets/img/mail/SideBar/sidebar-inbox.png"
@@ -27,11 +30,15 @@ export function MailSideBar({ filterBy, setFilterBy, onShowCompose }) {
           />
           <NavLink to="/mail">Inbox</NavLink>
         </li>
-        <li>
+        <li className="container-sidebar-sent">
           {/* <NavLink to="/mail">Sent</
           NavLink>{' '} */}
           <button className="btn btn-sent" onClick={handleSentClick}>
-            Sent
+            <img
+              className="img-sidebar-sent"
+              src="../../../appSus/assets/img/mail/SideBar/sidebar-sent.png"
+              alt=""
+            />{' '}
           </button>
 
           {
