@@ -166,7 +166,7 @@ function _createnotes() {
                     txt: 'Work-related tasks',
                     url: '',
                     todos: [
-                        { txt: 'Look smert', doneAt: null },
+                        { txt: 'Look smart', doneAt: null },
                         { txt: 'Sound stupid', doneAt: 187111116 }
                     ]
                 },
