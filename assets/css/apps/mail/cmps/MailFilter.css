@@ -1,0 +1,12 @@
+.mail-filter form {
+  display: flex;
+  /* max-width: 100px; */
+}
+
+.mail-filter form > * {
+  border: none;
+  outline: none;
+  padding: 5px;
+  margin: 10px;
+  width: 50px;
+}

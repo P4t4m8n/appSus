@@ -2,7 +2,7 @@ import { mailService } from '../services/mail.service.js'
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouterDOM
 
-export function MailCompose({ onShowCompose }) {
+export function MailCompose({ onShowCompose, onSendMail }) {
   const [mailToSend, setMailToSend] = useState(mailService.getEmptyMail())
   const navigate = useNavigate()
 
@@ -41,6 +41,7 @@ export function MailCompose({ onShowCompose }) {
       .save(updatedMailToSend)
       .then(() => {
         // showSuccessMsg(`Mail sent successfully`)
+        onSendMail()
         navigate('/mail')
       })
       .catch((err) => {

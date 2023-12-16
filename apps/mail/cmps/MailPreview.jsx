@@ -41,13 +41,7 @@ export function MailPreview({ mail, navigateToMailDetails }) {
     >
       <td>
         <div className="container-mail-btns" onClick={handleContainerClick}>
-          <button className="select-btn">
-            <img
-              src="../../../appSus/assets/img/mail/ToolBar/checkbox.png"
-              alt="Select"
-              title="Select"
-            />
-          </button>
+          <input type="checkbox" />
           <button className="star-btn"></button>
         </div>
       </td>

@@ -3,35 +3,37 @@ import { MailCompose } from './MailCompose.jsx'
 const { NavLink, useNavigate } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function MailSideBar({ filterBy, setFilterBy, onShowCompose }) {
-  // const navigate = useNavigate()
-
-  function handleSentClick() {}
+export function MailSideBar({
+  filterBy,
+  setFilterBy,
+  onShowCompose,
+  onFilterSentMails,
+  onFilterReceivedMails,
+}) {
+  const navigate = useNavigate()
 
   return (
     <aside className="mail-sidebar">
-      <button
-        className="btn btn-mail-compose"
-        // onClick={() => navigate(`/mail/compose`)}
-
-        onClick={onShowCompose}
-      >
+      <button className="btn btn-mail-compose" onClick={onShowCompose}>
         Compose
       </button>
-      <ul>
-        <li>
+      <ul className="container-sidebar-icons">
+        <li className="container-sidebar-inbox" onClick={onFilterReceivedMails}>
+          <img
+            className="img-sidebar-inbox"
+            src="../../../appSus/assets/img/mail/SideBar/sidebar-inbox.png"
+            alt=""
+          />
           <NavLink to="/mail">Inbox</NavLink>
         </li>
-        <li>
-          {/* <NavLink to="/mail">Sent</
-          NavLink>{' '} */}
-          <button className="btn btn-sent" onClick={handleSentClick}>
-            Sent
-          </button>
 
-          {
-            //TODO: Implement inbox vs sent folder
-          }
+        <li className="container-sidebar-sent" onClick={onFilterSentMails}>
+          <img
+            className="img-sidebar-sent"
+            src="../../../appSus/assets/img/mail/SideBar/sidebar-sent.png"
+            alt=""
+          />
+          <NavLink to="/mail">Sent</NavLink>
         </li>
         <li>
           <NavLink to="/mail/drafts">Drafts</NavLink>{' '}

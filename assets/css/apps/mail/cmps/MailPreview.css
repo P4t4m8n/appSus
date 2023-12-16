@@ -9,8 +9,10 @@
 }
 
 .status-read {
-  background-color: var(--mail-SideBar-bgColor);
+  background-color: #f2f6fc;
+  /* background-color: #eaf1fb; */
   /* color: #202124; */
+  /* border: 1px solid white; */
 }
 
 .status-unread {

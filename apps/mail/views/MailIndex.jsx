@@ -4,6 +4,8 @@ import { MailFilter } from '../cmps/MailFilter.jsx'
 import { mailService } from '../services/mail.service.js'
 import { MailHeader } from '../cmps/MailHeader.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
+import { eventBusService } from '../../../services/event-bus.service.js'
+
 const { Fragment } = React
 
 const { useState, useEffect } = React
@@ -15,12 +17,36 @@ export function MailIndex() {
   const [globalSearch, setGlobalSearch] = useState('')
   const [showFilter, setShowFilter] = useState(false)
   const [isShowCompose, setIsShowCompose] = useState(false)
+  const [isSendMail, setIsSendMail] = useState(false)
 
   const navigate = useNavigate()
 
   useEffect(() => {
     loadMails()
   }, [filterBy, globalSearch])
+
+  // Listening for new mail saved(sent)
+  useEffect(() => {
+    if (isSendMail) {
+      loadMails()
+      setIsSendMail(false) // Reset the flag after mails are loaded
+    }
+  }, [isSendMail])
+
+  useEffect(() => {
+    // Function to call when mail is deleted
+    const onMailDeleted = () => {
+      loadMails()
+    }
+
+    // Listen for 'mail-deleted' event
+    const unsubscribe = eventBusService.on('mail-deleted', onMailDeleted)
+
+    // Cleanup subscription
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
   function loadMails() {
     mailService.query({ ...filterBy, globalSearch }).then((retrievedMails) => {
@@ -31,14 +57,24 @@ export function MailIndex() {
 
   function onShowCompose() {
     setIsShowCompose((prevState) => !prevState)
-    console.log(
-      '🚀 ~ file: MailIndex.jsx:37 ~ onShowCompose ~ isShowCompose:',
-      isShowCompose
-    )
+  }
+
+  function onSendMail() {
+    setIsSendMail(true)
   }
 
   function onSetFilterBy(newFilter) {
     setFilterBy(newFilter)
+  }
+
+  function handleFilterSentMails() {
+    const defaultFilter = mailService.getDefaultFilter()
+    setFilterBy({ ...defaultFilter, from: 'user@appsus.com' })
+  }
+
+  function handleFilterReceivedMails() {
+    const defaultFilter = mailService.getDefaultFilter()
+    setFilterBy({ ...defaultFilter, to: 'user@appsus.com' })
   }
 
   if (!mails) return <div>Loading...</div>
@@ -59,10 +95,14 @@ export function MailIndex() {
             filterBy={filterBy}
             onSetFilterBy={setFilterBy}
             onShowCompose={onShowCompose}
+            onFilterSentMails={handleFilterSentMails}
+            onFilterReceivedMails={handleFilterReceivedMails}
           />
           <MailList mails={mails} />
         </div>
-        {isShowCompose && <MailCompose onShowCompose={onShowCompose} />}
+        {isShowCompose && (
+          <MailCompose onShowCompose={onShowCompose} onSendMail={onSendMail} />
+        )}
       </section>
     </div>
   )
