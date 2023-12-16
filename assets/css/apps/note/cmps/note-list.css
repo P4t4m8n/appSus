@@ -1,6 +1,6 @@
 .note-list {
     box-sizing: border-box;
-    columns: auto 4;
+    columns:12rem auto ;
     height: fit-content;
     padding: 2rem;
 
@@ -29,7 +29,6 @@
     scale: 1.05;
 }
 
-
 .note-btns {
     opacity: 0;
     transition: opacity 1s;
@@ -39,9 +38,6 @@
     height: fit-content;
    
 }
-
-.note-btns button img {}
-
 
 .note-btns>* {
     background-color: red;

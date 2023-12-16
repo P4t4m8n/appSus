@@ -8,6 +8,7 @@ import { MailIndex } from './apps/mail/views/MailIndex.jsx'
 import { NoteIndex } from './apps/note/views/NoteIndex.jsx'
 import { MailDetails } from './apps/mail/views/MailDetails.jsx'
 import { MailCompose } from './apps/mail/cmps/MailCompose.jsx'
+import { UserMsg } from './views/UserMsg.jsx'
 // TODO: Add Import UserMsg CMP
 // TODO: IDs for routing
 // TODO: Routing to edit mails/notes
@@ -26,6 +27,7 @@ export function App() {
           {/* <Route path="/mail/compose" element={<MailCompose />} /> */}
           <Route path="/note" element={<NoteIndex />} />
         </Routes>
+        <UserMsg></UserMsg>
       </section>
     </Router>
   )
