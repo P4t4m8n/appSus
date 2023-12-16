@@ -1,1 +1,111 @@
- /* home */
+/* Styling of navigation bar */
+.home-page #navdiv {
+    display: flex;
+    width: 17%;
+    margin-left: 82%;
+    justify-content: space-around;
+    margin-top: 1%;
+    height: 35px;
+}
+
+.home-page nav img {
+    margin-top: 5px;
+}
+
+.home-page #googleimg {
+    margin-top: 100px;
+}
+
+/* Removing underline from links*/
+.home-page a {
+    margin-top: 8px;
+    text-decoration: none;
+}
+
+.home-page button {
+    border-radius: 3px;
+    height: 100%;
+    padding: 5px 12px;
+    background-color: #4C87E1;
+    color: white;
+    border: none;
+}
+
+/* setting up size and border stle of search bar*/
+.home-page #maindiv {
+    width: 35%;
+    border-radius: 50px;
+    display: flex;
+    height: 40px;
+    border: 1px solid lightgrey;
+}
+
+.home-page #input span {
+    width: 80%;
+}
+
+.home-pag espan {
+    vertical-align: top;
+}
+
+.home-page span:first-child {
+    width: 10%;
+    border-radius: 50px;
+    margin-top: 7px;
+}
+
+.home-page span:last-child {
+    width: 10%;
+    border-radius: 50px;
+    margin-top: 7px;
+}
+
+.home-page input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0px;
+}
+
+.home-page section {
+    display: flex;
+    margin-top: 2%;
+    width: 23%;
+    justify-content: space-around;
+    margin-bottom: 2%;
+}
+
+.home-page section button {
+    padding: 10px 12px;
+    background-color: lightgrey;
+    color: black;
+}
+
+.home-page ul {
+    display: flex;
+    width: 30%;
+    padding-left: 0px;
+    list-style: none;
+    justify-content: space-around;
+    margin: 6px;
+}
+
+.home-page #Bottomdiv {
+    display: flex;
+    font-size: 12px;
+    margin-top: 3%;
+}
+
+.home-page #Bottomdiv span {
+    width: 7%;
+    margin-left: 31%;
+}
+
+/*When hovered*/
+.home-page a:hover {
+    text-decoration: underline;
+}
+
+.home-page button:hover {
+    border: 1px solid gray;
+}

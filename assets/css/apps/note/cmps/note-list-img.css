@@ -1,2 +1,34 @@
 /* Normal */
 
+.note .img-title{
+    text-align: center;
+}
+
+/* Edit */
+
+.note .note-add-img{
+    width: 100%;
+}
+.note .note-img-edit{
+    display: flex;
+
+}
+
+.note .note-img-edit textarea{
+
+}
+
+.note .note-add-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    gap:1rem;
+
+
+}
+
+
+.note-add-img .note-add-txt {
+   
+}

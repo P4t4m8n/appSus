@@ -1,6 +1,6 @@
 import { noteService } from '../services/note.service.js'
 import { NoteTxtAdd } from './NoteAdd/NoteTxtAdd.jsx'
-import { NoteimgAdd } from './NoteAdd/NoteimgAdd.jsx'
+import { NoteImgAdd } from './NoteAdd/NoteImgAdd.jsx'
 import { NoteVideoAdd } from './NoteAdd/NoteVideoAdd.jsx'
 import { NoteTodosAdd } from './NoteAdd/NoteTodosAdd.jsx'
 
@@ -39,6 +39,23 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
     let info = { ...noteToEdit.info, [field]: value }
     setNoteToEdit((prevNote) => ({ ...prevNote, info, type: cmpType }))
   }
+        if (field === 'url') value = URL.createObjectURL(target.files[0])
+
+        else if (field === 'urlYouTube') {
+            field = 'url'
+            value = target.value
+        }
+        else if (field === '') {
+            field = 'url'
+            value = 'assets/img/noimage100.png'
+        }
+
+        else value = target.value
+        console.log("field:", field)
+        console.log("value:", value)
+        let info = { ...noteToEdit.info, [field]: value }
+        setNoteToEdit(prevNote => ({ ...prevNote, info, type: cmpType }))
+    }
 
   function handleChangeTodos({ target }) {
     let field = target.name
@@ -151,7 +168,7 @@ function DynmicNoteAddCmp(props) {
     case 'note-txt':
       return <NoteTxtAdd {...props} />
     case 'note-img':
-      return <NoteimgAdd {...props} />
+      return <NoteImgAdd {...props} />
     case 'note-video':
       return <NoteVideoAdd {...props} />
     case 'note-todos':
