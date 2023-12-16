@@ -4,6 +4,8 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
 import { NoteEdit } from "../cmps/NoteEdit.jsx"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { showErrorMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect } = React
 
@@ -35,9 +37,16 @@ export function NoteIndex() {
     }
 
     function onDelete(noteId) {
-        noteService.remove(noteId).then(() => {
-            setNotes(prevNotes => prevNotes.filter(note => note.id !== noteId))
-        })
+        noteService.remove(noteId)
+        .then(() => {
+            setNotes(prevNotes => 
+                prevNotes.filter(note => note.id !== noteId))
+                showSuccessMsg(`Note successfully Removed!`)
+        }).catch(err => {
+            showErrorMsg(`Blame Yonatan`)
+            console.log('err:', err)
+          })
+
     }
 
     return (

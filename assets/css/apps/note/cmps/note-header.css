@@ -1,3 +1,5 @@
+
+
 .note-header {
     display: flex;
     background-color: aliceblue;
@@ -5,12 +7,16 @@
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
+   
+
 }
 
 .note-new .add-note-btns {
     opacity: 0;
     transition: opacity 1s;
     height: 100%;
+    transition: 1s;
+
 }
 
 .note-new.add-note-btns>*:hover {
@@ -18,13 +24,12 @@
     scale: 1.1;
 }
 
-.note-new.add-note-btns:hover {
+.note-new:hover .add-note-btns {
     opacity: 1;
 }
 
 .note-new .note-add-txt textarea:focus {
     font-size: large;
-
 }
 
 .note-new .note-add-txt {
@@ -42,12 +47,6 @@
     scale: 0.5;
 }
 
-.note-new .add-note-btns {
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-
 .note-new .add-note-btns>*,
 .note-new .save-btn {
     transition: scale 1s;
@@ -60,9 +59,7 @@
     scale: 1.2;
 }
 
-.note-new .add-note-btns:hover {
-    opacity: 1;
-}
+
 
 .note-new .save-btn img {
     background-color: none;
@@ -70,4 +67,41 @@
 
 .note-new .save-btn {
     background-color: inherit;
+}
+
+/* MQ */
+
+@media (max-width:850px) {
+
+    .note-new .add-note-btns {
+        opacity: 1;
+        transition: 1s;
+        height: 100%;
+    }
+
+    .note-new {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+    }
+}
+
+@media(max-width:630px){
+    .note-new .add-note-btns{
+       columns: auto 3;
+    }
+    
+}
+@media(max-width:415px){
+    .note-new .add-note-btns{
+       columns: auto 2;
+    }
+    
+}
+
+@media(max-width:360px){
+    .note-new .add-note-btns{
+        columns: auto 1;
+     }
 }

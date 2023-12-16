@@ -3,10 +3,16 @@ import { NoteTxtAdd } from './NoteAdd/NoteTxtAdd.jsx'
 import { NoteImgAdd } from './NoteAdd/NoteImgAdd.jsx'
 import { NoteVideoAdd } from './NoteAdd/NoteVideoAdd.jsx'
 import { NoteTodosAdd } from './NoteAdd/NoteTodosAdd.jsx'
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { showErrorMsg } from "../../../services/event-bus.service.js"
 
-const { useEffect, useState, Fragment } = React
+
+
+const { useEffect, useState, Fragment, useRef } = React
 
 export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
+  // const set = useRef(note)
+  // console.log("setNote:", set)
   const [noteToEdit, setNoteToEdit] = useState(note)
   const [cmpType, setCmpType] = useState(note.type)
 
@@ -17,10 +23,10 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
     setNoteToEdit((prevNote) => ({ ...prevNote, info }))
   }
 
+
   function handleChangeUrl({ target }) {
     var field = target.name
     var value = ''
-
 
     if (field === 'url') value = URL.createObjectURL(target.files[0])
 
@@ -69,19 +75,31 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
         if (noteToEdit.id !== '') {
           setIsEdit(false)
           setNote(noteToEdit)
+          console.log('1')
         } else {
           setIsAddedNote((prev) => !prev)
           setNoteToEdit(noteService.getNewNote())
         }
-       
+        showSuccessMsg(`Note successfully Saved!`)
+      }).catch(err => {
+        showErrorMsg(`Blame Yonatan`)
+        console.log('err:', err)
       })
-     
   }
+  // function onChgColor(ev) {
+  //   ev.preventDefault()
+  //   setNoteToEdit(prevNote => {
+  //     const updatedNote = { ...prevNote, style: { ...prevNote.style, backgroundColor: ev.target.value } }
+  //     return updatedNote
+  //   })
+
+  // }
 
   function removeTodo(ev, idx) {
     ev.preventDefault()
 
     var value = noteToEdit.info.todos.toSpliced(idx, 1)
+
     if (value.length === 0) value.push({ txt: 'Im a new Todo' })
     var info = { ...noteToEdit.info, todos: value }
     setNoteToEdit((prevNote) => ({ ...prevNote, info }))
@@ -92,47 +110,30 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
     target.style.height = target.scrollHeight + 'px'
   }
 
-}
-
-
-function removeTodo(ev, idx) {
-  ev.preventDefault()
-
-
-  var value = noteToEdit.info.todos.toSpliced(idx, 1)
-  if (value.length === 0) value.push({ txt: 'Im a new Todo' })
-  var info = { ...noteToEdit.info, todos: value }
-  setNoteToEdit(prevNote => ({ ...prevNote, info }))
-}
-
-function autoResize({ target }) {
-  target.style.height = 'auto';
-  target.style.height = target.scrollHeight + 'px'
-}
 
 
 
-return (
-  <Fragment >
-    <DynmicNoteAddCmp cmpType={cmpType} className="editClass" onSubmitNote={onSubmitNote} note={noteToEdit}
-      setNoteToEdit={setNoteToEdit} autoResize={autoResize} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
-    {
+  return (
+    <Fragment >
+      <DynmicNoteAddCmp cmpType={cmpType} className="editClass" onSubmitNote={onSubmitNote} note={noteToEdit}
+        setNoteToEdit={setNoteToEdit} autoResize={autoResize} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
+      {
 
-      <section className="add-note-btns ">
-        <button onClick={() => setCmpType('note-txt')}>{<img src='assets\img\txt.png'></img>}</button>
-        <button onClick={() => setCmpType('note-todos')}>{<img src='assets\img\todo.png'></img>}</button>
-        <button onClick={() => setCmpType('note-img')}>{<img src='assets\img\img.png'></img>}</button>
-        <button onClick={() => setCmpType('note-video')}>{<img src='assets\img\video.png'></img>}</button>
-        <button className="color-sec">
-          <label onChange={onChgColor} className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
-          <input onChange={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
-        </button>
-        <button onClick={() => setIsEdit(false)}>{<img src='assets\img\edit50.png'></img>}</button>
-      </section>
-    }
-  </Fragment>
+        <section className="add-note-btns ">
+          <button onClick={() => setCmpType('note-txt')}>{<img src='assets\img\txt.png'></img>}</button>
+          <button onClick={() => setCmpType('note-todos')}>{<img src='assets\img\todo.png'></img>}</button>
+          <button onClick={() => setCmpType('note-img')}>{<img src='assets\img\img.png'></img>}</button>
+          <button onClick={() => setCmpType('note-video')}>{<img src='assets\img\video.png'></img>}</button>
+          {/* <button className="color-sec">
+            <label className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
+            <input onChange={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
+          </button> */}
+          <button onClick={() => setIsEdit(false)}>{<img src='assets\img\edit50.png'></img>}</button>
+        </section>
+      }
+    </Fragment>
 
-)
+  )
 }
 
 function DynmicNoteAddCmp(props) {
