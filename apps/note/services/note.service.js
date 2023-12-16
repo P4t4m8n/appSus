@@ -71,7 +71,7 @@ function _createnotes() {
                     backgroundColor: '#008080'
                 },
                 info: {
-                    txt: 'Note to Note',
+                    txt: 'I wasted too much time on DB and the About page',
                     url: '',
                     todos: []
                 }
@@ -246,6 +246,21 @@ function _createnotes() {
                 info: {
                     url: 'https://www.youtube.com/embed/HyWYpM_S-2c?si=C2oF3AHUHnnJ5Tit',
                     txt: 'React for the Haters in 100 Seconds',
+                    todos: []
+                },
+                style: {
+                    backgroundColor: '#ff4500'
+                }
+            },
+            {
+                id: 'n121',
+                createdAt: 1112222,
+                type: 'note-txt',
+                isPinned: false,
+                isEdit: false,
+                info: {
+                    url: '',
+                    txt: 'I should focus on whats important I should focus on whats important I should focus on whats important I should focus on whats importan I should focus on whats importa I should focus on whats import I should focus on whats I should focus on whatsI should focus on wI should focus I should foI should I should,             oh look a birdie',
                     todos: []
                 },
                 style: {
