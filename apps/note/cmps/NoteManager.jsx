@@ -16,7 +16,7 @@ export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
 
     const [isEdit, setIsEdit] = useState(false)
     const [currNote, setNote] = useState(note)
-    console.log("currNote:", currNote)
+    const [isFoucs, setFoucs] = useState(false)
     // const [chgColor, setChgColor] = useState(false)
 
     function togglePin() {
@@ -30,12 +30,12 @@ export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
         setIsEdit(false);
     };
 
-
+    var foucs = (isFoucs) ? 'foucs' : ''
 
     return (
 
-        <li className="note" style={{ borderColor: currNote.style.backgroundColor }}>
-            <DynmicNoteCmp  setNote={setNote} onClose={handleModalClose} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
+        <li className={"note " + foucs} style={{ borderColor: currNote.style.backgroundColor }} onClick={() => setFoucs(!isFoucs)}>
+            <DynmicNoteCmp setNote={setNote} onClose={handleModalClose} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
             {!isEdit && <NoteButtons togglePin={togglePin} onEmail={onEmail} setIsEdit={setIsEdit} onDelete={onDelete} note={currNote}></NoteButtons>}
         </li>
     )

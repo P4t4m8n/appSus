@@ -1,6 +1,6 @@
 .note-list {
     box-sizing: border-box;
-    columns:12rem auto ;
+    columns: 12rem auto;
     height: fit-content;
     padding: 2rem;
 
@@ -25,8 +25,14 @@
     transition: scale 2s;
 }
 
-.note-list li:hover {
+/* .note-list li:hover {
     scale: 1.05;
+} */
+
+
+.foucs {
+   scale: 2;
+   background-color: bisque;
 }
 
 .note-btns {
@@ -36,7 +42,7 @@
     gap: 1rem;
     width: fit-content;
     height: fit-content;
-   
+
 }
 
 .note-btns>* {
