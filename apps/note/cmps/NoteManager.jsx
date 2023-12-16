@@ -8,9 +8,8 @@ import { NoteEdit } from './NoteEdit.jsx'
 import { noteService } from '../services/note.service.js'
 import { NoteEditModal } from './NoteAdd/NoteEditModal.jsx'
 
-const { useState, Fragment } = React
+const { useState } = React
 
-console.log('render')
 
 export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
 
@@ -41,8 +40,6 @@ export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
     )
 
     function DynmicNoteCmp(props) {
-        console.log("props:", props)
-        console.log("props:", props)
         // if (props.isEdit) return <NoteEditModal  {...props} />
         if (props.isEdit) return <NoteEdit  {...props} />
 
