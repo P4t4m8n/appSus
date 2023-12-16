@@ -118,6 +118,15 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
       <DynmicNoteAddCmp cmpType={cmpType} className="editClass" onSubmitNote={onSubmitNote} note={noteToEdit}
         setNoteToEdit={setNoteToEdit} autoResize={autoResize} removeTodo={removeTodo} handleChange={handleChange} handleChangeUrl={handleChangeUrl} handleChangeTodos={handleChangeTodos} />
       {
+        // <div className="dropdown">
+        //   <button className="dropbtn">Select Note Type</button>
+        //   <div className="dropdown-content">
+        //     <button onClick={() => setCmpType('note-txt')}>Text Note</button>
+        //     <button onClick={() => setCmpType('note-todos')}>Todo Note</button>
+        //     <button onClick={() => setCmpType('note-img')}>Image Note</button>
+        //     <button onClick={() => setCmpType('note-video')}>Video Note</button>
+        //   </div>
+        // </div>
 
         <section className="add-note-btns ">
           <button onClick={() => setCmpType('note-txt')}>{<img src='assets\img\txt.png'></img>}</button>
@@ -127,7 +136,7 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
           {/* <button className="color-sec">
             <label className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
             <input onChange={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
-          </button> */}
+           </button> */}
           <button onClick={() => setIsEdit(false)}>{<img src='assets\img\edit50.png'></img>}</button>
         </section>
       }

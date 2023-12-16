@@ -33,6 +33,13 @@
 .foucs {
    scale: 2;
    background-color: bisque;
+   /* position: absolute;
+   top:3%;
+   font-size: x-large;
+   right: 50%;
+   translate: 50%;
+   height: 100%; */
+   
 }
 
 .note-btns {
@@ -42,11 +49,11 @@
     gap: 1rem;
     width: fit-content;
     height: fit-content;
+    
 
 }
 
 .note-btns>* {
-    background-color: red;
     width: fit-content;
     height: fit-content;
     transition: scale 1s;
@@ -54,9 +61,11 @@
     padding: 0;
     background-color: inherit;
     border: none;
+    
 
 
 }
+
 
 .note-btns>*:hover {
     scale: 1.5;
@@ -96,7 +105,6 @@
 
 .note textarea {
     box-sizing: border-box;
-    background-color: red;
     resize: none;
     /* display: block; */
     /* border: none; */

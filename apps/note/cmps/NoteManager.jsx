@@ -23,13 +23,16 @@ export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
         noteService.save(currNote).then(() => setIsAddedNote((prev) => !prev))
     }
 
+    function onEmail() {
+        swal("Your mail has been sent", "Not Really, but look at the pretty alert", "success");
+    }
 
     //Modal handling
     const handleModalClose = () => {
         setIsEdit(false);
     };
 
-    var foucs = (isFoucs) ? 'foucs' : ''
+    var foucs = (isFoucs || isEdit) ? 'foucs' : ''
 
     return (
 
