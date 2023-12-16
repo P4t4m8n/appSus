@@ -67,6 +67,16 @@ export function MailIndex() {
     setFilterBy(newFilter)
   }
 
+  function handleFilterSentMails() {
+    const defaultFilter = mailService.getDefaultFilter()
+    setFilterBy({ ...defaultFilter, from: 'user@appsus.com' })
+  }
+
+  function handleFilterReceivedMails() {
+    const defaultFilter = mailService.getDefaultFilter()
+    setFilterBy({ ...defaultFilter, to: 'user@appsus.com' })
+  }
+
   if (!mails) return <div>Loading...</div>
 
   return (
@@ -85,6 +95,8 @@ export function MailIndex() {
             filterBy={filterBy}
             onSetFilterBy={setFilterBy}
             onShowCompose={onShowCompose}
+            onFilterSentMails={handleFilterSentMails}
+            onFilterReceivedMails={handleFilterReceivedMails}
           />
           <MailList mails={mails} />
         </div>

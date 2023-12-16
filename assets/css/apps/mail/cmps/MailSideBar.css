@@ -64,6 +64,7 @@
   margin-inline-end: 12px;
   vertical-align: center;
   cursor: pointer;
+  padding-inline: 5px;
 }
 
 .container-sidebar-icons > *:hover {
@@ -75,13 +76,15 @@
   border-bottom-right-radius: 24px;
 }
 
-.container-sidebar-inbox {
+.container-sidebar-inbox,
+.container-sidebar-sent {
   display: flex;
   align-content: center;
   gap: 10px;
 }
 
-.img-sidebar-inbox {
+.img-sidebar-inbox,
+.img-sidebar-sent {
   width: 20px;
 }
 
