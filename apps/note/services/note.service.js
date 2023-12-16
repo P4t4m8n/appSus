@@ -181,8 +181,8 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    url: 'https://www.youtube.com/embed/zR9sY83Nqd8?si=33Mu4cW4PMHDtqMv',
-                    txt: 'Python Programming Basics',
+                    url: 'https://www.youtube.com/embed/m4-HM_sCvtQ?si=n-2VWiDlmojelVLE',
+                    txt: 'Java for the Haters in 100 Seconds',
                     todos: []
                 },
                 style: {
