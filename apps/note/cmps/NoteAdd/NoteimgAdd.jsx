@@ -1,6 +1,6 @@
 
 
-export function NoteImgAdd({ handleChangeUrl, onSubmitNote, note }) {
+export function NoteimgAdd({ handleChangeUrl, onSubmitNote, note }) {
 
 
     return (

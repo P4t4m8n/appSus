@@ -6,15 +6,18 @@ import { NoteTodosAdd } from "./NoteAdd/NoteTodosAdd.jsx"
 
 const { useEffect, useState, Fragment } = React
 
-export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
+export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit, setChgColor }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
     const [cmpType, setCmpType] = useState(note.type)
 
     const editClass = (isEdit) ? 'edit' : ''
 
     function onChgColor({ target }) {
-        var style = { ...style, backgroundColor: target.value }
+        console.log("target:", target)
+        // target.style.borderColor = target.value
+        var style = { ...noteToEdit.style, backgroundColor: target.value }
         setNoteToEdit(prevNote => ({ ...prevNote, style }))
+        setChgColor(prev => !prev)
     }
 
     function onEmail(noteId) {
@@ -122,8 +125,8 @@ export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote, isEdit }) {
                     <button onClick={() => setCmpType('note-img')}>{<img src='assets\img\img.png'></img>}</button>
                     <button onClick={() => setCmpType('note-video')}>{<img src='assets\img\video.png'></img>}</button>
                     <button className="color-sec">
-                        <label className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
-                        <input onInput={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
+                        <label onChange={onChgColor} className="color-btn" htmlFor="favcolor">{<img src='assets\img\color.png'></img>}</label >
+                        <input onChange={onChgColor} type="color" id="favcolor" name="favcolor" value="#ff0000" hidden></input>
                     </button>
                     <button onClick={() => setIsEdit(false)}>{<img src='assets\img\edit50.png'></img>}</button>
                 </section>

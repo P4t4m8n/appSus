@@ -5,7 +5,7 @@ export function Home() {
 
             <nav>
                 <div id="navdiv">
-                    <a href="https://www.google.com/gmail/about/#" class="c">Gmail</a>
+                    <a href="https://www.google.com/gmail/about/#" className="c">Gmail</a>
                     <a href="https://www.google.co.in/imghp?hl=en&tab=wi&ogbl" class="c">Images</a>
                     <div><img src="menu.png"/></div>
                     <div><button type="submit" name="button">Sign In</button></div>

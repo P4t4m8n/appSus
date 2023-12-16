@@ -9,22 +9,31 @@ import { noteService } from '../services/note.service.js'
 
 const { useState, Fragment } = React
 
-export function NoteManager({ note, onDelete, onEmail,setIsAddedNote }) {
+export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
 
     const [currNote, setNote] = useState(note)
     const [isEdit, setIsEdit] = useState(false)
+    const [chgColor, setChgColor] = useState(false)
 
     function togglePin() {
         currNote.isPinned = !currNote.isPinned
-        noteService.save(currNote).then(() => setIsAddedNote((prev)=>!prev))
+        noteService.save(currNote).then(() => setIsAddedNote((prev) => !prev))
+    }
+
+    function onChgColor( {target} ) {
+        
+        console.log("target:", target)
+        // target.style.borderColor = target.value
+        var style = { ...currNote.style, backgroundColor: target.value }
+        setNote(prevNote => ({ ...prevNote, style }))
     }
 
     return (
 
-        <Fragment>
-            <DynmicNoteCmp setNote={setNote} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
+        <li className="note" style={{ borderColor: currNote.style.backgroundColor }}>
+            <DynmicNoteCmp setChgColor={setChgColor} setNote={setNote} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
             {!isEdit && <NoteButtons togglePin={togglePin} onEmail={onEmail} setIsEdit={setIsEdit} onDelete={onDelete} note={currNote}></NoteButtons>}
-        </Fragment>
+        </li>
     )
 
     function DynmicNoteCmp(props) {

@@ -1,4 +1,4 @@
-
+const { Fragment } = React
 
 import { NoteManager } from './NoteManager.jsx'
 
@@ -11,9 +11,9 @@ export function NoteList({ notes, onDelete, togglePin, setIsAddedNote }) {
                 notes.map(note => {
                     const t = (note.isEdit) ? 'test' : ''
                     return (
-                        <li key={note.id} className={`${t} ${'note'}`} style={{ borderColor: note.style.backgroundColor }}>
+                        <Fragment key={note.id} >
                             <NoteManager setIsAddedNote={setIsAddedNote} togglePin={togglePin} onDelete={onDelete} note={note} />
-                        </li>
+                        </Fragment>
                     )
                 })
             }
