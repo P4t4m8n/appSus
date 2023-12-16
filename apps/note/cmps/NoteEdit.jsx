@@ -10,7 +10,7 @@ import { showErrorMsg } from "../../../services/event-bus.service.js"
 
 const { useEffect, useState, Fragment, useRef } = React
 
-export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote }) {
+export function NoteEdit({ setIsAddedNote, note, setIsEdit, setNote,setFoucs }) {
   // const set = useRef(note)
   // console.log("setNote:", set)
   const [noteToEdit, setNoteToEdit] = useState(note)

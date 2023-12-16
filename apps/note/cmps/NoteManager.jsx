@@ -24,7 +24,7 @@ export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
     }
 
     function onEmail() {
-        swal("Your mail has been sent", "Not Really, but look at the pretty alert", "success");
+        swal("Your mail has been sent", "Not Really, but look at the pretty alert.", "success");
     }
 
     //Modal handling
@@ -36,8 +36,9 @@ export function NoteManager({ note, onDelete, onEmail, setIsAddedNote }) {
 
     return (
 
-        <li className={"note " + foucs} style={{ borderColor: currNote.style.backgroundColor }} onClick={() => setFoucs(!isFoucs)}>
-            <DynmicNoteCmp setNote={setNote} onClose={handleModalClose} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
+        <li className={"note " + foucs} onDoubleClick={() => setFoucs(!isFoucs)} style={{ borderColor: currNote.style.backgroundColor }} >
+           
+            <DynmicNoteCmp setFoucs={setFoucs} setNote={setNote} onClose={handleModalClose} isEdit={isEdit} cmpType={currNote.type} note={currNote} onDelete={onDelete} setIsEdit={setIsEdit} />
             {!isEdit && <NoteButtons togglePin={togglePin} onEmail={onEmail} setIsEdit={setIsEdit} onDelete={onDelete} note={currNote}></NoteButtons>}
         </li>
     )
