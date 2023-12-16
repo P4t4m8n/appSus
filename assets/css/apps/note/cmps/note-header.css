@@ -13,13 +13,6 @@
     height: 100%;
 }
 
-
-button
- {
-    transition: scale 1s;
-  
-}
-
 .note-new.add-note-btns>*:hover {
     margin: 0.25rem;
     scale: 1.1;
@@ -27,36 +20,6 @@ button
 
 .note-new.add-note-btns:hover {
     opacity: 1;
-}
-
-.notes-index img {
-    background-color: none;
-}
-
-.notes-index button {
-    border: none;
-    background-color: inherit;
-
-
-}
-
-.notes-index textarea {
-    background-color: inherit;
-    border: none;
-    overflow: hidden;
-    min-height: min-content;
-    max-height: 500px;
-    resize: none;
-    display: flex;
-    justify-content: center;
-    overflow-wrap: break-word;
-    transition: font-size 1s;
-    text-align: start;
-    font-family: robotoBold;
-    padding-top: 1.25rem;
-    padding: 0;
-    align-items: center;
-
 }
 
 .note-new .note-add-txt textarea:focus {
@@ -107,6 +70,4 @@ button
 
 .note-new .save-btn {
     background-color: inherit;
-
-
 }

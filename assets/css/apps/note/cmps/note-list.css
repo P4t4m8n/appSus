@@ -1,18 +1,10 @@
 .note-list {
     box-sizing: border-box;
-}
-
-.note-list {
     columns: auto 4;
     height: fit-content;
     padding: 2rem;
 
 }
-
-/* ul {
-    padding-inline-start: 0;
-} */
-
 
 .note-list>* {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -23,7 +15,6 @@
     border: 0.2rem solid;
     border-radius: 2rem;
     margin-bottom: 1rem;
-
 }
 
 .note-list li:hover .note-btns {
@@ -35,7 +26,7 @@
 }
 
 .note-list li:hover {
-    scale: 1.1;
+    scale: 1.05;
 }
 
 
@@ -46,7 +37,7 @@
     gap: 1rem;
     width: fit-content;
     height: fit-content;
-    /* position: static; */
+   
 }
 
 .note-btns button img {}
