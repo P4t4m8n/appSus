@@ -18,8 +18,13 @@ export function MailSideBar({ filterBy, setFilterBy, onShowCompose }) {
       >
         Compose
       </button>
-      <ul>
-        <li>
+      <ul className="container-sidebar-icons">
+        <li className="container-sidebar-inbox">
+          <img
+            className="img-sidebar-inbox"
+            src="../../../appSus/assets/img/mail/SideBar/sidebar-inbox.png"
+            alt=""
+          />
           <NavLink to="/mail">Inbox</NavLink>
         </li>
         <li>

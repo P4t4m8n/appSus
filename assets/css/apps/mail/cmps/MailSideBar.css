@@ -3,6 +3,8 @@
   flex-direction: column;
   background-color: var(--mail-SideBar-bgColor);
   width: var(--mail-SideBar-width);
+  font-family: 'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 
 .mail-sidebar li {
@@ -53,4 +55,23 @@
   background-size: contain;
 
   transform: translateY(-50%);
+}
+
+.container-sidebar-icons > * {
+  margin-inline-start: 26px;
+}
+
+.container-sidebar-inbox {
+  display: flex;
+  align-content: center;
+  gap: 10px;
+}
+
+.img-sidebar-inbox {
+  width: 20px;
+}
+
+.container-sidebar-icons li:first-child a {
+  padding-block-start: 2px;
+  font-weight: 700;
 }
