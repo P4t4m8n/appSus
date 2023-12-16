@@ -71,7 +71,7 @@ function _createnotes() {
                     backgroundColor: '#008080'
                 },
                 info: {
-                    txt: 'Cooking recipes for the week',
+                    txt: 'Note to Note',
                     url: '',
                     todos: []
                 }
@@ -98,11 +98,13 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    txt: 'Home improvement tasks',
+                    txt: 'Make notes',
                     url: '',
                     todos: [
-                        { txt: 'Paint the living room', doneAt: 187111115 },
-                        { txt: 'Fix leaking faucet', doneAt: null }
+                        { txt: 'Copy everything from someone else', doneAt: 187111115 },
+                        { txt: 'make it look like yours', doneAt: null },
+                        { txt: 'Fail', doneAt: null },
+                        { txt: 'Start again', doneAt: null },
                     ]
                 },
                 style: {
@@ -116,12 +118,12 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    url: 'https://www.youtube.com/embed/B-kxUMHBxNo?si=33Mu4cW4PMHDtqMv',
-                    txt: 'Introduction to Data Science',
+                    url: 'https://www.youtube.com/embed/aXOChLn5ZdQ?si=BvuDvzMouu9Kp7JR',
+                    txt: 'JavaScript for the Haters',
                     todos: []
                 },
                 style: {
-                    backgroundColor: '#008080'
+                    backgroundColor: '#008481'
                 }
             },
             {
@@ -222,7 +224,7 @@ function _createnotes() {
                 createdAt: 1112222,
                 type: 'note-todos',
                 isPinned: false,
-                isEdit:false,
+                isEdit: false,
                 info: {
                     txt: 'Fitness goals',
                     url: '',
@@ -242,8 +244,8 @@ function _createnotes() {
                 isPinned: false,
                 isEdit: false,
                 info: {
-                    url: 'https://www.youtube.com/embed/0pThnRneDjw?si=33Mu4cW4PMHDtqMv',
-                    txt: 'Artificial Intelligence Explained',
+                    url: 'https://www.youtube.com/embed/HyWYpM_S-2c?si=C2oF3AHUHnnJ5Tit',
+                    txt: 'React for the Haters in 100 Seconds',
                     todos: []
                 },
                 style: {
