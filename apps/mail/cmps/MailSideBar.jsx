@@ -12,6 +12,14 @@ export function MailSideBar({
 }) {
   const navigate = useNavigate()
 
+  function handleInboxClick() {
+    navigate('/mail/inbox')
+  }
+
+  function handleSentClick() {
+    navigate('/mail/sent')
+  }
+
   return (
     <aside className="mail-sidebar">
       <button className="btn btn-mail-compose" onClick={onShowCompose}>
@@ -24,7 +32,7 @@ export function MailSideBar({
             src="../../../appSus/assets/img/mail/SideBar/sidebar-inbox.png"
             alt=""
           />
-          <NavLink to="/mail">Inbox</NavLink>
+          <NavLink to="/mail/inbox">Inbox</NavLink>
         </li>
 
         <li className="container-sidebar-sent" onClick={onFilterSentMails}>
@@ -33,7 +41,7 @@ export function MailSideBar({
             src="../../../appSus/assets/img/mail/SideBar/sidebar-sent.png"
             alt=""
           />
-          <NavLink to="/mail">Sent</NavLink>
+          <NavLink to="/mail/sent">Sent</NavLink>
         </li>
         <li>
           <NavLink to="/mail/drafts">Drafts</NavLink>{' '}

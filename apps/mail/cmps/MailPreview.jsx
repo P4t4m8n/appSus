@@ -54,28 +54,3 @@ export function MailPreview({ mail, navigateToMailDetails }) {
     </tr>
   )
 }
-
-//   return (
-//     <article className="mail-preview">
-//       <div className="container-mail-btns">
-//         <button>Select</button>
-//         <button>⭐</button>
-//       </div>
-//       <div className="mail-from">{mail.from}</div>
-//       <div className="mail-subject">{mail.subject}</div>
-//       <div className="mail-sent-at">{formattedSentAt}</div>
-//       {/* Include other elements like buttons if needed */}
-//     </article>
-//   )
-
-//   return (
-//     <article className="mail-preview">
-//       <div className="container-mail-btns">
-//         <button>Select</button>
-//         <button>⭐</button>
-//       </div>
-//       <h2 className="mail-from">{mail.from}</h2>
-//       <h2 className="mail-subject">{mail.subject}</h2>
-//       <h2 className="mail-sent-at">{formattedSentAt}</h2>
-//     </article>
-//   )
