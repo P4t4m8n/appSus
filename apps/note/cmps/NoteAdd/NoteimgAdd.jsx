@@ -32,7 +32,7 @@ export function NoteImgAdd({ handleChangeUrl, onSubmitNote, note }) {
 
                     <button>
                 <label htmlFor="file">
-                        <img src='assets\img\upload50.png'></img>
+                        <img src='assets\img\upload50.png' alt='assets/img/noimage100.png'></img>
                 </label>
                     </button>
                 <button onClick={onSubmitNote}>{<img src='assets\img\save50.png'></img>}</button>
