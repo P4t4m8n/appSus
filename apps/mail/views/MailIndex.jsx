@@ -12,7 +12,7 @@ const { Fragment } = React
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouterDOM
 
-export function MailIndex() {
+export function MailIndex({ folder }) {
   const [mails, setMails] = useState(null)
   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
   const [globalSearch, setGlobalSearch] = useState('')
@@ -26,6 +26,20 @@ export function MailIndex() {
   useEffect(() => {
     loadMails()
   }, [filterBy, globalSearch])
+
+  useEffect(() => {
+    if (folder === 'sent') {
+      setFilterBy({
+        ...mailService.getDefaultFilter(),
+        from: 'user@appsus.com',
+      })
+    } else if (folder === 'inbox') {
+      setFilterBy({ ...mailService.getDefaultFilter(), to: 'user@appsus.com' })
+    } else {
+      setFilterBy(mailService.getDefaultFilter())
+    }
+    loadMails()
+  }, [folder])
 
   // Listening for new mail saved(sent)
   useEffect(() => {
